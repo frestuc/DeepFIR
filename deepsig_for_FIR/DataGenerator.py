@@ -52,8 +52,7 @@ class DataGenerator(keras.utils.Sequence):
 
     def __fetch_index(self, index):
         self.x_out = self.X[index]
-        self.y_out = self.Y[index]        
-
+        self.y_out = self.Y[index]
 
     #def on_epoch_end(self):
     #    'Updates indexes after each epoch'
