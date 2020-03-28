@@ -18,7 +18,7 @@ from keras.models import Model
 from keras.optimizers import Adam
 from keras.utils import plot_model
 from keras.utils.io_utils import HDF5Matrix
-from numba import njit, prange
+# from numba import njit, prange
 from sklearn.model_selection import train_test_split
 from tqdm import tqdm
 
@@ -152,7 +152,6 @@ class DeepSig(object):
                                             batch_size=self.args.batch_size,
                                             data_path=self.args.data_path)        
     
-
 
     def train_baseline(self):
         '''Train model through Keras framework.'''
