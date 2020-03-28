@@ -9,6 +9,7 @@ import threading
 import time
 
 from keras.utils.io_utils import HDF5Matrix
+import Utils
 
 
 class DataGenerator(keras.utils.Sequence):
@@ -19,7 +20,7 @@ class DataGenerator(keras.utils.Sequence):
         self.indexes = indexes
         self.batch_size = batch_size
         self.data_path = data_path
-        self.shuffle=shuffle
+        self.shuffle = shuffle
         self.cache = {}
         self.X = HDF5Matrix(self.data_path, 'X')
         self.Y = HDF5Matrix(self.data_path, 'Y')

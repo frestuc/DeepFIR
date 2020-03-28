@@ -3,7 +3,7 @@ import h5py
 import json
 import keras
 import numpy as np
-import pickle
+import pickle as pkl
 import os
 import time
 
@@ -25,7 +25,12 @@ from tqdm import tqdm
 class DeepSig(object):
     '''Class to build, train, and test model described in paper
     Over-the-Air Deep Learning Based Radio Signal Classification
-    by O'Shea. Data from https://www.deepsig.io/datasets 2018.01A.'''
+    by O'Shea. Data from https://www.deepsig.io/datasets 2018.01A.
+    In this dataset we have X,Y,Z
+        x : actual [[I1 Q1], [I2 Q2]] format;
+        y : labels in [1 0 0 ... 0 ] format
+        z : SNR values from -20 to 30
+    Each modulation has 106496 samples with several SNR values'''
 
 
     def __init__(self):
@@ -35,10 +40,17 @@ class DeepSig(object):
             os.makedirs(self.args.save_path)
         os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
         os.environ["CUDA_VISIBLE_DEVICES"] = str(self.args.id_gpu)
-        self.run()
+
+        self.num_classes = self.args.num_classes
+        self.num_examples_per_class = self.args.num_ex_mod
+
+        if self.args.train_cnn or self.args.train_fir:
+            self.run()
+        else:
+            print('You are not training any model')
 
 
-    def build_model(self):
+    def build_model_baseline(self):
         '''Build model architecture.'''
         print('*************** Building Model ***************')
         inputs = Input(shape=(1, 1024, 2))
@@ -57,7 +69,7 @@ class DeepSig(object):
         x = Flatten()(x)
         x = Dense(128, activation='selu')(x)
         x = Dense(128, activation='selu')(x)
-        x = Dense(24, activation='softmax')(x)
+        x = Dense(self.num_classes, activation='softmax')(x)
         self.model = Model(inputs=inputs, outputs=x)
         self.model.summary()
 
@@ -65,27 +77,84 @@ class DeepSig(object):
     def load_data(self):
         '''Load data from path into framework.'''
         print('*************** Loading Data ***************')
-        indexes = range(len(HDF5Matrix(self.args.h5_path, 'X')))
-        np.random.shuffle(indexes)
-        train_idx = int(len(indexes)*.74)
-        valid_idx = int(len(indexes)*.80)
-        self.train_indexes = indexes[:train_idx]
-        self.valid_indexes = indexes[train_idx:valid_idx]
-        self.test_indexes = indexes[valid_idx:]
 
-        self.train_generator = DataGenerator(indexes=self.train_indexes,
-                                             batch_size=self.args.batch_size,
-                                             data_path=self.args.data_path)
-        self.valid_generator = DataGenerator(indexes=self.valid_indexes,
-                                             batch_size=self.args.batch_size,
-                                             data_path=self.args.data_path)
+        if self.args.load_indexes:
+            print('--------- Loading from File indexes.pkl ---------')
+            # Getting back the objects:
+            with open('indexes.pkl', 'rb') as f:  # Python 3: open(..., 'rb')
+                self.train_indexes_BL, \
+                self.train_indexes_FIR, \
+                self.valid_indexes_BL, \
+                self.valid_indexes_FIR, \
+                self.test_indexes = pkl.load(f)
+
+        else:
+            print('--------- Creating indexes and saving them in indexes.pkl -----------')
+            indexes_start = np.array(range(self.num_examples_per_class)) # this goes from 0 to 106495
+            np.random.shuffle(indexes_start)
+            indexes = indexes_start
+
+            train_idx_baseline = int(len(indexes) * .54)
+            valid_idx_baseline = int(len(indexes) * .60)
+            train_idx_FIR = int(len(indexes) * .87)
+            valid_idx_FIR = int(len(indexes) * .90)
+
+            train_indexes_baseline = indexes[:train_idx_baseline]
+            valid_indexes_baseline = indexes[train_idx_baseline:valid_idx_baseline]
+            train_indexes_FIR = indexes[valid_idx_baseline:train_idx_FIR]
+            valid_indexes_FIR= indexes[train_idx_FIR:valid_idx_FIR]
+            test_indexes = indexes[valid_idx_FIR:]
+
+            self.train_indexes_BL = train_indexes_baseline
+            self.train_indexes_FIR = train_indexes_FIR
+            self.valid_indexes_BL = valid_indexes_baseline
+            self.valid_indexes_FIR = valid_indexes_FIR
+            self.test_indexes = test_indexes
+
+            # expand this shuffling indexing
+            for i in range(self.num_classes - 1):
+                self.train_indexes_BL = np.append(self.train_indexes_BL,
+                    [x + (i + 1) * self.num_examples_per_class for x in train_indexes_baseline])
+                self.train_indexes_FIR = np.append(self.train_indexes_FIR,
+                    [x + (i + 1) * self.num_examples_per_class for x in train_indexes_FIR])
+                self.valid_indexes_BL = np.append(self.valid_indexes_BL,
+                    [x + (i + 1) * self.num_examples_per_class for x in valid_indexes_baseline])
+                self.valid_indexes_FIR = np.append(self.valid_indexes_FIR,
+                    [x + (i + 1) * self.num_examples_per_class for x in valid_indexes_FIR])
+                self.test_indexes = np.append(self.test_indexes,
+                    [x + (i + 1) * self.num_examples_per_class for x in test_indexes])
+
+            # Saving the objects:
+            with open('indexes.pkl', 'wb') as f:  # Python 3: open(..., 'wb')
+                pkl.dump([self.train_indexes_BL,
+                          self.train_indexes_FIR,
+                          self.valid_indexes_BL,
+                          self.valid_indexes_FIR,
+                          self.test_indexes], f)
+
+
+        if self.args.train_ccn:
+            self.train_generator_BL = DataGenerator(indexes=self.train_indexes_BL,
+                                                 batch_size=self.args.batch_size,
+                                                 data_path=self.args.data_path)
+            self.valid_generator_BL = DataGenerator(indexes=self.valid_indexes_BL,
+                                                 batch_size=self.args.batch_size,
+                                                 data_path=self.args.data_path)
+        if self.args.train_fir:
+            self.train_generator_FIR = DataGenerator(indexes=self.train_indexes_FIR,
+                                                    batch_size=self.args.batch_size,
+                                                    data_path=self.args.data_path)
+            self.valid_generator_FIR = DataGenerator(indexes=self.valid_indexes_FIR,
+                                                    batch_size=self.args.batch_size,
+                                                    data_path=self.args.data_path)
+
         self.test_generator = DataGenerator(indexes=self.test_indexes,
                                             batch_size=self.args.batch_size,
                                             data_path=self.args.data_path)        
     
 
 
-    def train(self):
+    def train_baseline(self):
         '''Train model through Keras framework.'''
         print('*************** Training Model ***************')
         optimizer = Adam(lr=0.0001)
@@ -103,9 +172,9 @@ class DeepSig(object):
         call_backs.append(earlystop_callback)
 
         start_time = time.time()
-        self.model.fit_generator(generator=self.train_generator,
+        self.model.fit_generator(generator=self.train_generator_BL,
                                  epochs=self.args.epochs,
-                                 validation_data=self.valid_generator,
+                                 validation_data=self.valid_generator_BL,
                                  shuffle=False,
                                  callbacks=call_backs,
                                  max_queue_size=100)
@@ -141,9 +210,9 @@ class DeepSig(object):
 
     def run(self):
         '''Run different steps in model pipeline.'''
-        self.build_model()
+        self.build_model_baseline()
         self.load_data()
-        self.train()
+        self.train_baseline()
         self.test()
 
 
@@ -156,16 +225,31 @@ class DeepSig(object):
         parser.add_argument('--id_gpu', type=int, default=2,
                             help='GPU to use.')
 
-        parser.add_argument('--save_path', type=str, default='/home/bruno/deepsig3',
+        parser.add_argument('--load_indexes', type=bool, default=True,
+                            help='Load indexes from external file. If False, you create and save them in "indexes.pkl".')
+
+        parser.add_argument('--train_cnn', type=bool, default=False,
+                            help='Train CNN.')
+
+        parser.add_argument('--train_fir', type=bool, default=True,
+                            help='Train CNN.')
+
+        parser.add_argument('--num_classes', type=int, default=24,
+                            help='Number of classes in the dataset.')
+
+        parser.add_argument('--num_ex_mod', type=int, default=106496,
+                            help='Number of classes in the dataset.')
+
+        parser.add_argument('--save_path', type=str, default='/home/salvo/deepsig_res',
                             help='Path to save weights, model architecture, and logs.')
 
         parser.add_argument('--h5_path', type=str,
-                            default='/mnt/WDMyBook/bruno/deepsig/GOLD_XYZ_OSC.0001_1024.hdf5',
+                            default='/mnt/nas/bruno/deepsig/GOLD_XYZ_OSC.0001_1024.hdf5',
                             help='Path to original h5 file.')
         
         #GOLD_XYZ_OSC.0001_1024
         parser.add_argument('--data_path', type=str,
-                            default='/mnt/WDMyBook/bruno/deepsig/GOLD_XYZ_OSC.0001_1024.hdf5',
+                            default='/mnt/nas/bruno/deepsig/GOLD_XYZ_OSC.0001_1024.hdf5',
                             help='Path to data.')
     
         parser.add_argument('--patience', type=int, default=3,
