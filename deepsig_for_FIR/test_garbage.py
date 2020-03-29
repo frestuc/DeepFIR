@@ -1,78 +1,47 @@
-import numpy as np
-import pickle as pkl
+from keras.callbacks import EarlyStopping
+from keras.layers import Input, Dense, Flatten, Reshape, Lambda
+from keras.layers.convolutional import Conv2D, MaxPooling2D, MaxPooling1D, Conv1D
+from keras.models import Model, load_model
+from keras.optimizers import Adam
+from keras import backend as K
 
-num_examples_per_class = 20
-num_classes = 3
+model_name = 'C:\\Users\\totix\\Desktop\\darpa\\modulation_model.hdf5'
 
-indexes_start = np.array(range(num_examples_per_class)) # this goes from 0 to 106495
-indexes = indexes_start
-
-train_idx_baseline = int(len(indexes) * .54)
-valid_idx_baseline = int(len(indexes) * .60)
-train_idx_FIR = int(len(indexes) * .87)
-valid_idx_FIR = int(len(indexes) * .90)
-
-train_indexes_baseline = indexes[:train_idx_baseline]
-valid_indexes_baseline = indexes[train_idx_baseline:valid_idx_baseline]
-train_indexes_FIR = indexes[valid_idx_baseline:train_idx_FIR]
-valid_indexes_FIR= indexes[train_idx_FIR:valid_idx_FIR]
-test_indexes = indexes[valid_idx_FIR:]
-
-print('LOL')
-print(train_indexes_baseline)
-print(train_indexes_FIR)
-print(valid_indexes_baseline)
-print(valid_indexes_FIR)
-print(test_indexes)
-
-train_indexes_BL_1 = train_indexes_baseline
-train_indexes_FIR_1 = train_indexes_FIR
-valid_indexes_BL_1 = valid_indexes_baseline
-valid_indexes_FIR_1 = valid_indexes_FIR
-test_indexes_1 = test_indexes
-
-print('ASD')
-print(train_indexes_baseline)
-print(train_indexes_FIR)
-print(valid_indexes_baseline)
-print(valid_indexes_FIR)
-print(test_indexes)
-
-# expand this shuffling indexing
-for i in range(num_classes - 1):
-    train_indexes_BL_1 = np.append(train_indexes_BL_1,[x + (i + 1) * num_examples_per_class for x in train_indexes_baseline])
-    train_indexes_FIR_1 = np.append(train_indexes_FIR_1,[x + (i + 1) * num_examples_per_class for x in train_indexes_FIR])
-    valid_indexes_BL_1 = np.append(valid_indexes_BL_1,[x + (i + 1) * num_examples_per_class for x in valid_indexes_baseline])
-    valid_indexes_FIR_1 = np.append(valid_indexes_FIR_1,[x + (i + 1) * num_examples_per_class for x in valid_indexes_FIR])
-    test_indexes_1 = np.append(test_indexes_1,[x + (i + 1) * num_examples_per_class for x in test_indexes])
-
-print('RoFTL')
-print(train_indexes_BL_1)
-print(train_indexes_FIR_1)
-print(valid_indexes_BL_1)
-print(valid_indexes_FIR_1)
-print(test_indexes_1)
+K.clear_session()
+inputs = Input(shape=(1, 1024, 2))
+x = Conv2D(64, kernel_size=1, name="bananefritteLOL")(inputs)
+x = MaxPooling2D(pool_size=(1, 2), data_format='channels_last', name = 'krustyilclown')(x)
+x = Conv2D(64, kernel_size=1)(x)
+x = MaxPooling2D(pool_size=(1, 2), data_format='channels_last')(x)
+x = Conv2D(64, kernel_size=1)(x)
+x = MaxPooling2D(pool_size=(1, 2), data_format='channels_last')(x)
+x = Conv2D(64, kernel_size=1)(x)
+x = MaxPooling2D(pool_size=(1, 2), data_format='channels_last')(x)
+x = Conv2D(64, kernel_size=1)(x)
+x = MaxPooling2D(pool_size=(1, 2), data_format='channels_last')(x)
+x = Conv2D(64, kernel_size=1)(x)
+x = MaxPooling2D(pool_size=(1, 2), data_format='channels_last')(x)
+x = Conv2D(64, kernel_size=1)(x)
+x = MaxPooling2D(pool_size=(1, 2), data_format='channels_last')(x)
+x = Conv2D(64, kernel_size=1)(x)
+x = MaxPooling2D(pool_size=(1, 2), data_format='channels_last')(x)
+x = Flatten()(x)
+x = Dense(128, activation='selu')(x)
+x = Dense(128, activation='selu')(x)
+x = Dense(24, activation='softmax')(x)
 
 
+model1 = Model(inputs=inputs, outputs=x)
+model1.summary()
 
-print(len(indexes))
-print(len(train_indexes_BL_1) + len(train_indexes_FIR_1) + len(valid_indexes_BL_1) + len(valid_indexes_FIR_1) + len(test_indexes_1))
+# load model
+K.clear_session()
+model2 = load_model(model_name)
+model2.summary()
 
-# Saving the objects:
-with open('indexes.pkl', 'wb') as f:  # Python 3: open(..., 'wb')
-    pkl.dump([train_indexes_BL_1,
-                 train_indexes_FIR_1,
-                 valid_indexes_BL_1,
-                 valid_indexes_FIR_1,
-                 test_indexes_1], f)
+K.clear_session()
+model2.load_weights(model_name,by_name = True, skip_mismatch=True)
 
-# Getting back the objects:
-with open('indexes.pkl','rb') as f:  # Python 3: open(..., 'rb')
-    train_indexes_BL_2, train_indexes_FIR_2, valid_indexes_BL_2, valid_indexes_FIR_2, test_indexes_2 = pkl.load(f)
-
-print('RoFTL2')
-print(train_indexes_BL_2)
-print(train_indexes_FIR_2)
-print(valid_indexes_BL_2)
-print(valid_indexes_FIR_2)
-print(test_indexes_2)
+# load weights
+K.clear_session()
+model1.load_weights(model_name,by_name = True, skip_mismatch=True)

@@ -4,8 +4,8 @@ import json
 import keras
 import numpy as np
 import pickle as pkl
-import os
 import time
+import os
 
 from argparse import Namespace
 from CustomModelCheckpoint import CustomModelCheckpoint
@@ -16,6 +16,7 @@ from keras.layers import Input, Dense, Flatten, Reshape, Lambda
 from keras.layers.convolutional import Conv2D, MaxPooling2D, MaxPooling1D, Conv1D
 from keras.models import Model
 from keras.optimizers import Adam
+from  FIRLayer import FIRLayer
 from keras.utils import plot_model
 from keras.utils.io_utils import HDF5Matrix
 # from numba import njit, prange
@@ -52,7 +53,7 @@ class DeepSig(object):
 
     def build_model_baseline(self):
         '''Build model architecture.'''
-        print('*************** Building Model ***************')
+        print('*************** Building Baseline Model ***************')
         inputs = Input(shape=(1, 1024, 2))
         x = Conv2D(64, kernel_size=1)(inputs)
         print(x)
@@ -73,6 +74,24 @@ class DeepSig(object):
         self.model = Model(inputs=inputs, outputs=x)
         self.model.summary()
 
+    def build_model_FIR(self):
+        '''Build model architecture.'''
+        print('*************** Building Baseline Model with FIR ***************')
+        inputs = Input(shape=(1, 1024, 2))
+        x = FIRLayer(output_dim=1024, filter_dim=self.args.fir_size, channels=1, verbose=1, input_shape=(1024, 2))(inputs)
+        x = Conv2D(64, kernel_size=1, trainable=False)(x)
+        x = MaxPooling2D(pool_size=(1, 2), data_format='channels_last', trainable=False)(x)
+        for i in range(6):
+            x = Conv2D(64, kernel_size=1, trainable=False)(x)
+            x = MaxPooling2D(pool_size=(1, 2), data_format='channels_last', trainable=False)(x)
+        x = Flatten(trainable=False)(x)
+        x = Dense(128, activation='selu', trainable=False)(x)
+        x = Dense(128, activation='selu', trainable=False)(x)
+        x = Dense(self.num_classes, activation='softmax', trainable=False)(x)
+
+        self.model = Model(inputs=inputs, outputs=x)
+        self.model.summary()
+
 
     def load_data(self):
         '''Load data from path into framework.'''
@@ -89,51 +108,55 @@ class DeepSig(object):
                 self.test_indexes = pkl.load(f)
 
         else:
-            print('--------- Creating indexes and saving them in indexes.pkl -----------')
-            indexes_start = np.array(range(self.num_examples_per_class)) # this goes from 0 to 106495
-            np.random.shuffle(indexes_start)
-            indexes = indexes_start
+            if ~os.path.exists('indexes.pkl'):
+                print('--------- Creating indexes and saving them in indexes.pkl -----------')
+                indexes_start = np.array(range(self.num_examples_per_class)) # this goes from 0 to 106495
+                np.random.shuffle(indexes_start)
+                indexes = indexes_start
 
-            train_idx_baseline = int(len(indexes) * .54)
-            valid_idx_baseline = int(len(indexes) * .60)
-            train_idx_FIR = int(len(indexes) * .87)
-            valid_idx_FIR = int(len(indexes) * .90)
+                train_idx_baseline = int(len(indexes) * .54)
+                valid_idx_baseline = int(len(indexes) * .60)
+                train_idx_FIR = int(len(indexes) * .87)
+                valid_idx_FIR = int(len(indexes) * .90)
 
-            train_indexes_baseline = indexes[:train_idx_baseline]
-            valid_indexes_baseline = indexes[train_idx_baseline:valid_idx_baseline]
-            train_indexes_FIR = indexes[valid_idx_baseline:train_idx_FIR]
-            valid_indexes_FIR= indexes[train_idx_FIR:valid_idx_FIR]
-            test_indexes = indexes[valid_idx_FIR:]
+                train_indexes_baseline = indexes[:train_idx_baseline]
+                valid_indexes_baseline = indexes[train_idx_baseline:valid_idx_baseline]
+                train_indexes_FIR = indexes[valid_idx_baseline:train_idx_FIR]
+                valid_indexes_FIR= indexes[train_idx_FIR:valid_idx_FIR]
+                test_indexes = indexes[valid_idx_FIR:]
 
-            self.train_indexes_BL = train_indexes_baseline
-            self.train_indexes_FIR = train_indexes_FIR
-            self.valid_indexes_BL = valid_indexes_baseline
-            self.valid_indexes_FIR = valid_indexes_FIR
-            self.test_indexes = test_indexes
+                self.train_indexes_BL = train_indexes_baseline
+                self.train_indexes_FIR = train_indexes_FIR
+                self.valid_indexes_BL = valid_indexes_baseline
+                self.valid_indexes_FIR = valid_indexes_FIR
+                self.test_indexes = test_indexes
 
-            # expand this shuffling indexing
-            for i in range(self.num_classes - 1):
-                self.train_indexes_BL = np.append(self.train_indexes_BL,
-                    [x + (i + 1) * self.num_examples_per_class for x in train_indexes_baseline])
-                self.train_indexes_FIR = np.append(self.train_indexes_FIR,
-                    [x + (i + 1) * self.num_examples_per_class for x in train_indexes_FIR])
-                self.valid_indexes_BL = np.append(self.valid_indexes_BL,
-                    [x + (i + 1) * self.num_examples_per_class for x in valid_indexes_baseline])
-                self.valid_indexes_FIR = np.append(self.valid_indexes_FIR,
-                    [x + (i + 1) * self.num_examples_per_class for x in valid_indexes_FIR])
-                self.test_indexes = np.append(self.test_indexes,
-                    [x + (i + 1) * self.num_examples_per_class for x in test_indexes])
+                # expand this shuffling indexing
+                for i in range(self.num_classes - 1):
+                    self.train_indexes_BL = np.append(self.train_indexes_BL,
+                        [x + (i + 1) * self.num_examples_per_class for x in train_indexes_baseline])
+                    self.train_indexes_FIR = np.append(self.train_indexes_FIR,
+                        [x + (i + 1) * self.num_examples_per_class for x in train_indexes_FIR])
+                    self.valid_indexes_BL = np.append(self.valid_indexes_BL,
+                        [x + (i + 1) * self.num_examples_per_class for x in valid_indexes_baseline])
+                    self.valid_indexes_FIR = np.append(self.valid_indexes_FIR,
+                        [x + (i + 1) * self.num_examples_per_class for x in valid_indexes_FIR])
+                    self.test_indexes = np.append(self.test_indexes,
+                        [x + (i + 1) * self.num_examples_per_class for x in test_indexes])
 
-            # Saving the objects:
-            with open('indexes.pkl', 'wb') as f:  # Python 3: open(..., 'wb')
-                pkl.dump([self.train_indexes_BL,
-                          self.train_indexes_FIR,
-                          self.valid_indexes_BL,
-                          self.valid_indexes_FIR,
-                          self.test_indexes], f)
+                # Saving the objects:
+                with open('indexes.pkl', 'wb') as f:  # Python 3: open(..., 'wb')
+                    pkl.dump([self.train_indexes_BL,
+                              self.train_indexes_FIR,
+                              self.valid_indexes_BL,
+                              self.valid_indexes_FIR,
+                              self.test_indexes], f)
+            else:
+                print('File indexes.pkl already exists! I am using the old one')
 
 
         if self.args.train_ccn:
+            print('Generating data for Baseline')
             self.train_generator_BL = DataGenerator(indexes=self.train_indexes_BL,
                                                  batch_size=self.args.batch_size,
                                                  data_path=self.args.data_path)
@@ -141,6 +164,7 @@ class DeepSig(object):
                                                  batch_size=self.args.batch_size,
                                                  data_path=self.args.data_path)
         if self.args.train_fir:
+            print('Generating data for FIR')
             self.train_generator_FIR = DataGenerator(indexes=self.train_indexes_FIR,
                                                     batch_size=self.args.batch_size,
                                                     data_path=self.args.data_path)
@@ -162,7 +186,7 @@ class DeepSig(object):
                            metrics=['accuracy'])
         call_backs = []
         checkpoint = CustomModelCheckpoint(
-                os.path.join(self.args.save_path, "weights.hdf5"),
+                os.path.join(self.args.save_path, "baseline_weights.hdf5"),
                 monitor='val_acc', verbose=1, save_best_only=True)
         call_backs.append(checkpoint)
         earlystop_callback = EarlyStopping(
@@ -180,7 +204,34 @@ class DeepSig(object):
         train_time = time.time() - start_time
         print('Time to train model %0.3f s' % train_time)
         self.best_model_path = checkpoint.best_path
-       
+
+    def train_FIR(self):
+        '''Train model through Keras framework.'''
+        print('*************** Training Model ***************')
+        optimizer = Adam(lr=0.0001)
+        self.model.compile(loss='categorical_crossentropy',
+                           optimizer=optimizer,
+                           metrics=['accuracy'])
+        call_backs = []
+        checkpoint = CustomModelCheckpoint(
+            os.path.join(self.args.save_path, "FIR_baseline_weights.hdf5"),
+            monitor='val_acc', verbose=1, save_best_only=True)
+        call_backs.append(checkpoint)
+        earlystop_callback = EarlyStopping(
+            monitor='val_acc', min_delta=0, patience=self.args.patience,
+            verbose=1, mode='auto')
+        call_backs.append(earlystop_callback)
+
+        start_time = time.time()
+        self.model.fit_generator(generator=self.train_generator_FIR,
+                                 epochs=self.args.epochs,
+                                 validation_data=self.valid_generator_FIR,
+                                 shuffle=False,
+                                 callbacks=call_backs,
+                                 max_queue_size=100)
+        train_time = time.time() - start_time
+        print('Time to train model %0.3f s' % train_time)
+        self.best_model_path = checkpoint.best_path
 
     def test(self):
         '''Test the trained model.
@@ -209,10 +260,18 @@ class DeepSig(object):
 
     def run(self):
         '''Run different steps in model pipeline.'''
-        self.build_model_baseline()
-        self.load_data()
-        self.train_baseline()
-        self.test()
+        if self.args.train_cnn:
+            self.build_model_baseline()
+            self.load_data()
+            self.train_baseline()
+            self.test()
+        elif self.args.train_fir:
+            self.build_model_FIR()
+            self.load_data()
+            self.train_FIR()
+            self.test()
+        else:
+            print('EXITING - Please specify model to be trained')
 
 
     def parse_arguments(self):
@@ -237,6 +296,9 @@ class DeepSig(object):
                             help='Number of classes in the dataset.')
 
         parser.add_argument('--num_ex_mod', type=int, default=106496,
+                            help='Number of examples per class in the dataset.')
+
+        parser.add_argument('--fir_size', type=int, default=10,
                             help='Number of classes in the dataset.')
 
         parser.add_argument('--save_path', type=str, default='/home/salvo/deepsig_res',
