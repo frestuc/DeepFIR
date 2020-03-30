@@ -54,43 +54,57 @@ class DeepSig(object):
     def build_model_baseline(self):
         '''Build model architecture.'''
         print('*************** Building Baseline Model ***************')
-        inputs = Input(shape=(1, 1024, 2))
-        x = Conv2D(64, kernel_size=1)(inputs)
-        print(x)
-        #x = Lambda(lambda m: K.squeeze(m, 1))(x)
-        x = MaxPooling2D(pool_size=(1, 2), data_format='channels_last')(x)
-        print(x)
-        #x = Lambda(lambda m: K.expand_dims(m, 1))(x)
-        for i in range(6):
-            print(x)
-            x = Conv2D(64, kernel_size=1)(x)
-            #x = Lambda(lambda m: K.squeeze(m, 1))(x)
-            x = MaxPooling2D(pool_size=(1, 2), data_format='channels_last')(x)
-            #x = Lambda(lambda m: K.expand_dims(m, 1))(x)
-        x = Flatten()(x)
-        x = Dense(128, activation='selu')(x)
-        x = Dense(128, activation='selu')(x)
-        x = Dense(self.num_classes, activation='softmax')(x)
+        inputs = Input(shape=(1, 1024, 2), name = 'Input')
+        x = Conv2D(64, kernel_size=1, name = 'Conv_1')(inputs)
+        x = MaxPooling2D(pool_size=(1, 2), data_format='channels_last', name = 'MaxPool_1')(x)
+        x = Conv2D(64, kernel_size=1, name = 'Conv_2')(x)
+        x = MaxPooling2D(pool_size=(1, 2), data_format='channels_last', name = 'MaxPool_2')(x)
+        x = Conv2D(64, kernel_size=1, name = 'Conv_3')(x)
+        x = MaxPooling2D(pool_size=(1, 2), data_format='channels_last', name = 'MaxPool_3')(x)
+        x = Conv2D(64, kernel_size=1, name = 'Conv_4')(x)
+        x = MaxPooling2D(pool_size=(1, 2), data_format='channels_last', name = 'MaxPool_4')(x)
+        x = Conv2D(64, kernel_size=1, name = 'Conv_5')(x)
+        x = MaxPooling2D(pool_size=(1, 2), data_format='channels_last', name = 'MaxPool_5')(x)
+        x = Conv2D(64, kernel_size=1, name = 'Conv_6')(x)
+        x = MaxPooling2D(pool_size=(1, 2), data_format='channels_last', name = 'MaxPool_6')(x)
+        x = Conv2D(64, kernel_size=1, name = 'Conv_7')(x)
+        x = MaxPooling2D(pool_size=(1, 2), data_format='channels_last', name = 'MaxPool_7')(x)
+        x = Flatten(name = 'Flatten')(x)
+        x = Dense(128, activation='selu', name = 'Dense_1')(x)
+        x = Dense(128, activation='selu', name = 'Dense_2')(x)
+        x = Dense(self.num_classes, activation='softmax', name = 'Softmax')(x)
         self.model = Model(inputs=inputs, outputs=x)
         self.model.summary()
 
     def build_model_FIR(self):
         '''Build model architecture.'''
         print('*************** Building Baseline Model with FIR ***************')
-        inputs = Input(shape=(1, 1024, 2))
-        x = FIRLayer(output_dim=1024, filter_dim=self.args.fir_size, channels=1, verbose=1, input_shape=(1024, 2))(inputs)
-        x = Conv2D(64, kernel_size=1, trainable=False)(x)
-        x = MaxPooling2D(pool_size=(1, 2), data_format='channels_last', trainable=False)(x)
-        for i in range(6):
-            x = Conv2D(64, kernel_size=1, trainable=False)(x)
-            x = MaxPooling2D(pool_size=(1, 2), data_format='channels_last', trainable=False)(x)
-        x = Flatten(trainable=False)(x)
-        x = Dense(128, activation='selu', trainable=False)(x)
-        x = Dense(128, activation='selu', trainable=False)(x)
-        x = Dense(self.num_classes, activation='softmax', trainable=False)(x)
 
+
+        inputs = Input(shape=(1, 1024, 2), name='Input')
+        x = FIRLayer(output_dim=1024, filter_dim=self.args.fir_size, channels=1, verbose=1, input_shape=(1024, 2))(
+            inputs, name = 'FIR_layer')
+        x = Conv2D(64, kernel_size=1, name='Conv_1', trainable = False)(x)
+        x = MaxPooling2D(pool_size=(1, 2), data_format='channels_last', name='MaxPool_1', trainable = False)(x)
+        x = Conv2D(64, kernel_size=1, name='Conv_2', trainable = False)(x)
+        x = MaxPooling2D(pool_size=(1, 2), data_format='channels_last', name='MaxPool_2', trainable = False)(x)
+        x = Conv2D(64, kernel_size=1, name='Conv_3', trainable = False)(x)
+        x = MaxPooling2D(pool_size=(1, 2), data_format='channels_last', name='MaxPool_3', trainable = False)(x)
+        x = Conv2D(64, kernel_size=1, name='Conv_4', trainable = False)(x)
+        x = MaxPooling2D(pool_size=(1, 2), data_format='channels_last', name='MaxPool_4', trainable = False)(x)
+        x = Conv2D(64, kernel_size=1, name='Conv_5', trainable = False)(x)
+        x = MaxPooling2D(pool_size=(1, 2), data_format='channels_last', name='MaxPool_5', trainable = False)(x)
+        x = Conv2D(64, kernel_size=1, name='Conv_6', trainable = False)(x)
+        x = MaxPooling2D(pool_size=(1, 2), data_format='channels_last', name='MaxPool_6', trainable = False)(x)
+        x = Conv2D(64, kernel_size=1, name='Conv_7', trainable = False)(x)
+        x = MaxPooling2D(pool_size=(1, 2), data_format='channels_last', name='MaxPool_7', trainable = False)(x)
+        x = Flatten(name='Flatten', trainable = False)(x)
+        x = Dense(128, activation='selu', name='Dense_1', trainable = False)(x)
+        x = Dense(128, activation='selu', name='Dense_2', trainable = False)(x)
+        x = Dense(self.num_classes, activation='softmax', name='Softmax', trainable = False)(x)
         self.model = Model(inputs=inputs, outputs=x)
         self.model.summary()
+        self.model.load_weights(os.path.join(self.args.save_path, self.args.bl_model_name), by_name=True, skip_mismatch=True, reshape=False)
 
 
     def load_data(self):
@@ -186,7 +200,7 @@ class DeepSig(object):
                            metrics=['accuracy'])
         call_backs = []
         checkpoint = CustomModelCheckpoint(
-                os.path.join(self.args.save_path, "baseline_weights.hdf5"),
+                os.path.join(self.args.save_path, self.args.bl_model_name),
                 monitor='val_acc', verbose=1, save_best_only=True)
         call_backs.append(checkpoint)
         earlystop_callback = EarlyStopping(
@@ -282,6 +296,9 @@ class DeepSig(object):
 
         parser.add_argument('--id_gpu', type=int, default=2,
                             help='GPU to use.')
+
+        parser.add_argument('--bl_model_name', type=str, default='modulation_model.hdf5',
+                            help='Name of baseline model.')
 
         parser.add_argument('--load_indexes', type=bool, default=True,
                             help='Load indexes from external file. If False, you create and save them in "indexes.pkl".')
