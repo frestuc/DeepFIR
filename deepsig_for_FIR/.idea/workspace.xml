@@ -49,8 +49,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/launch_me.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="9" column="51" selection-start-line="9" selection-start-column="51" selection-end-line="9" selection-end-column="51" />
+            <state relative-caret-position="462">
+              <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -327,7 +327,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585582939408</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Fixed location of hdf5 files">
+      <created>1585586593563</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1585586593563</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TodoView">
@@ -372,7 +379,8 @@
     <MESSAGE value="fixed bash script" />
     <MESSAGE value="might work now" />
     <MESSAGE value="Fixed typos" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed typos" />
+    <MESSAGE value="Fixed location of hdf5 files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed location of hdf5 files" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Utils.py">
@@ -486,8 +494,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/launch_me.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" column="51" selection-start-line="9" selection-start-column="51" selection-end-line="9" selection-end-column="51" />
+        <state relative-caret-position="462">
+          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
         </state>
       </provider>
     </entry>
