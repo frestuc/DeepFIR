@@ -110,10 +110,9 @@ class DeepSig(object):
     def load_data(self):
         '''Load data from path into framework.'''
         print('*************** Loading Data ***************')
-
+        print('Load indexes: ' + self.args.load_indexes)
         if self.args.load_indexes:
             print('--------- Loading from File indexes.pkl ---------')
-            print(self.args.load_indexes)
             # Getting back the objects:
             with open('indexes.pkl', 'r') as f:  # Python 3: open(..., 'rb')
                 self.train_indexes_BL, \
