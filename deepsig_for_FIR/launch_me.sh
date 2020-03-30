@@ -10,8 +10,7 @@ gpu=$1
 # --data_path /mnt/WDMyBook/bruno/deepsig/GOLD_XYZ_OSC.0001_1024.hdf5 \
 ​
 python2 ./DeepSig.py \
-        --train_cnn True \
-        --train_fir False \
+        --train_cnn \
         --h5_path /mnt/WDMyBook/bruno/deepsig/GOLD_XYZ_OSC.0001_1024.hdf5 \
         --data_path /mnt/WDMyBook/bruno/deepsig/GOLD_XYZ_OSC.0001_1024.hdf5 \
         --batch_size 32 \
@@ -19,7 +18,6 @@ python2 ./DeepSig.py \
         --fir_size 10 \
         --num_ex_mod 106496 \
         --num_classes 24 \
-        --load_indexes False \
         --id_gpu $gpu \
         --patience 3 \
 	> ./out.log \

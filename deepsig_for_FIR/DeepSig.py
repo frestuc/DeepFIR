@@ -37,7 +37,6 @@ class DeepSig(object):
     def __init__(self):
         '''Initialize class variables.'''
         self.args = self.parse_arguments()
-        print(self.args)
         if not os.path.exists(self.args.save_path):
             os.makedirs(self.args.save_path)
         os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
@@ -304,13 +303,13 @@ class DeepSig(object):
         parser.add_argument('--fir_model_name', type=str, default='FIR_model.hdf5',
                             help='Name of baseline model.')
 
-        parser.add_argument('--load_indexes', type=bool, default=True,
+        parser.add_argument('--load_indexes', action='store_true',
                             help='Load indexes from external file. If False, you create and save them in "indexes.pkl".')
 
-        parser.add_argument('--train_cnn', type=bool, default=False,
+        parser.add_argument('--train_cnn', action='store_true',
                             help='Train CNN.')
 
-        parser.add_argument('--train_fir', type=bool, default=True,
+        parser.add_argument('--train_fir', action='store_true',
                             help='Train CNN.')
 
         parser.add_argument('--num_classes', type=int, default=24,
