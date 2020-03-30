@@ -325,12 +325,12 @@ class DeepSig(object):
                             help='Path to save weights, model architecture, and logs.')
 
         parser.add_argument('--h5_path', type=str,
-                            default='/mnt/nas/bruno/deepsig/GOLD_XYZ_OSC.0001_1024.hdf5',
+                            default='/mnt/nas/bruno/deepsig/2018.01/GOLD_XYZ_OSC.0001_1024.hdf5',
                             help='Path to original h5 file.')
         
         #GOLD_XYZ_OSC.0001_1024
         parser.add_argument('--data_path', type=str,
-                            default='/mnt/nas/bruno/deepsig/GOLD_XYZ_OSC.0001_1024.hdf5',
+                            default='/mnt/nas/bruno/deepsig/2018.01/GOLD_XYZ_OSC.0001_1024.hdf5',
                             help='Path to data.')
     
         parser.add_argument('--patience', type=int, default=3,
