@@ -228,7 +228,7 @@ class DeepSig(object):
                            metrics=['accuracy'])
         call_backs = []
         checkpoint = CustomModelCheckpoint(
-            os.path.join(self.args.save_path, "FIR_baseline_weights.hdf5"),
+            os.path.join(self.args.save_path, self.args.fir_model_name),
             monitor='val_acc', verbose=1, save_best_only=True)
         call_backs.append(checkpoint)
         earlystop_callback = EarlyStopping(
@@ -298,6 +298,9 @@ class DeepSig(object):
                             help='GPU to use.')
 
         parser.add_argument('--bl_model_name', type=str, default='modulation_model.hdf5',
+                            help='Name of baseline model.')
+
+        parser.add_argument('--fir_model_name', type=str, default='FIR_model.hdf5',
                             help='Name of baseline model.')
 
         parser.add_argument('--load_indexes', type=bool, default=True,
