@@ -1,3 +1,4 @@
+#!/bin/bash
 gpu=$1
 
 # dgx-2
