@@ -212,10 +212,12 @@ class DeepSig(object):
         self.model.fit_generator(generator=self.train_generator_BL,
                                  steps_per_epoch = self.args.max_steps,
                                  epochs=self.args.epochs,
+                                 validation_steps=len(self.valid_generator_BL),
                                  validation_data=self.valid_generator_BL,
                                  shuffle=False,
                                  callbacks=call_backs,
-                                 use_multiprocessing=False)
+                                 use_multiprocessing=False,
+                                 max_queue_size=100)
         train_time = time.time() - start_time
         print('Time to train model %0.3f s' % train_time)
         self.best_model_path = checkpoint.best_path
