@@ -210,6 +210,7 @@ class DeepSig(object):
 
         start_time = time.time()
         self.model.fit_generator(generator=self.train_generator_BL,
+                                 steps_per_epoch = self.args.max_steps,
                                  epochs=self.args.epochs,
                                  validation_data=self.valid_generator_BL,
                                  shuffle=False,
@@ -238,6 +239,7 @@ class DeepSig(object):
 
         start_time = time.time()
         self.model.fit_generator(generator=self.train_generator_FIR,
+                                 steps_per_epoch=self.args.max_steps,
                                  epochs=self.args.epochs,
                                  validation_data=self.valid_generator_FIR,
                                  shuffle=False,
@@ -293,6 +295,9 @@ class DeepSig(object):
         
         parser = argparse.ArgumentParser(description = 'Train and Validation pipeline',
                                          formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+
+        parser.add_argument('--max_steps', type=int, default=None,
+                            help='Max number of batches.')
 
         parser.add_argument('--id_gpu', type=int, default=2,
                             help='GPU to use.')

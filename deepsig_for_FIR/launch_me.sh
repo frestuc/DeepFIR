@@ -16,6 +16,7 @@ python2 ./DeepSig.py \
         --batch_size 32 \
         --epochs 25 \
         --fir_size 10 \
+        --max_steps 1000 \
         --num_ex_mod 106496 \
         --num_classes 24 \
         --id_gpu $gpu \
