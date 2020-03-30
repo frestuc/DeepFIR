@@ -209,7 +209,6 @@ class DeepSig(object):
         call_backs.append(earlystop_callback)
 
         start_time = time.time()
-        next(self.train_generator_FIR)
         self.model.fit_generator(generator=self.train_generator_BL,
                                  steps_per_epoch = self.args.max_steps,
                                  epochs=self.args.epochs,
