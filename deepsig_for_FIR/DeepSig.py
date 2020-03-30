@@ -169,7 +169,7 @@ class DeepSig(object):
                 print('File indexes.pkl already exists! I am using the old one')
 
 
-        if self.args.train_ccn:
+        if self.args.train_cnn:
             print('Generating data for Baseline')
             self.train_generator_BL = DataGenerator(indexes=self.train_indexes_BL,
                                                  batch_size=self.args.batch_size,
