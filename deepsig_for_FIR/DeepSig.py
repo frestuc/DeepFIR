@@ -37,6 +37,7 @@ class DeepSig(object):
     def __init__(self):
         '''Initialize class variables.'''
         self.args = self.parse_arguments()
+        print(self.args)
         if not os.path.exists(self.args.save_path):
             os.makedirs(self.args.save_path)
         os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
