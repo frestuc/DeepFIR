@@ -6,13 +6,13 @@ gpu=$1
 # --data_path /mnt/nas/bruno/deepsig/2018.01/GOLD_XYZ_OSC.0001_1024.hdf5 \
 
 # dgx-1
-# --h5_path /mnt/WDMyBook/bruno/deepsig/GOLD_XYZ_OSC.0001_1024.hdf5 \
-# --data_path /mnt/WDMyBook/bruno/deepsig/GOLD_XYZ_OSC.0001_1024.hdf5 \
+# --h5_path /mnt/WDMyBook2/salvo/deepsig/GOLD_XYZ_OSC.0001_1024.hdf5 \
+# --data_path /mnt/WDMyBook2/salvo/deepsig/GOLD_XYZ_OSC.0001_1024.hdf5 \
 ​
 python2 ./DeepSig.py \
         --train_cnn \
-        --h5_path /mnt/WDMyBook/bruno/deepsig/GOLD_XYZ_OSC.0001_1024.hdf5 \
-        --data_path /mnt/WDMyBook/bruno/deepsig/GOLD_XYZ_OSC.0001_1024.hdf5 \
+        --h5_path /mnt/WDMyBook2/salvo/deepsig/GOLD_XYZ_OSC.0001_1024.hdf5 \
+        --data_path /mnt/WDMyBook2/salvo/deepsig/GOLD_XYZ_OSC.0001_1024.hdf5 \
         --batch_size 32 \
         --epochs 25 \
         --fir_size 10 \
