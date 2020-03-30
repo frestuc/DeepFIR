@@ -79,7 +79,7 @@ class DeepSig(object):
     def build_model_FIR(self):
         '''Build model architecture.'''
         print('*************** Building Baseline Model with FIR ***************')
-
+        #test
 
         inputs = Input(shape=(1, 1024, 2), name='Input')
         x = FIRLayer(output_dim=1024, filter_dim=self.args.fir_size, channels=1, verbose=1, input_shape=(1024, 2))(
