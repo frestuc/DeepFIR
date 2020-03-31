@@ -278,7 +278,8 @@ class DeepSig(object):
         self.model.compile(loss='categorical_crossentropy',
                            optimizer=optimizer,
                            metrics=['accuracy'])
-        score = self.model.evaluate_generator(self.test_generator, verbose=1)
+        score = self.model.evaluate_generator(self.test_generator, verbose=1,
+                                              use_multiprocessing = False)
         print(score)
 
     def run(self):
