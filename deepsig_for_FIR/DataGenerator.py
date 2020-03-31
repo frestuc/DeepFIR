@@ -15,13 +15,14 @@ import Utils
 class DataGenerator(keras.utils.Sequence):
     'Generates data for Keras.'
 
-    def __init__(self, indexes, batch_size, data_path, shuffle=False):
+    def __init__(self, indexes, batch_size, data_path, shuffle=False, is_2d = False):
         'Initialization'
         self.indexes = indexes
         self.batch_size = batch_size
         self.data_path = data_path
         self.shuffle = shuffle
         self.cache = {}
+        self.is_2d = is_2d
         self.X = HDF5Matrix(self.data_path, 'X')
         self.Y = HDF5Matrix(self.data_path, 'Y')
 
@@ -45,7 +46,8 @@ class DataGenerator(keras.utils.Sequence):
         for i, idx in enumerate(indexes):
             X[i,] = self.X[idx]
             y[i] = self.Y[idx]
-        X = np.expand_dims(X, 1)
+        if self.is_2d:
+            X = np.expand_dims(X, 1)
         # print(X[0])
         # print(np.argmax(y))
         return X, y
