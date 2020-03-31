@@ -50,32 +50,8 @@ class DeepSig(object):
         else:
             print('You are not training any model')
 
-    def build_model_baseline(self):
-        '''Build model architecture.'''
-        print('*************** Building Baseline Model ***************')
-        inputs = Input(shape=(1024, 2), name='Input')
-        x = Conv1D(64, kernel_size=1, name='Conv_1')(inputs)
-        x = MaxPooling1D(pool_size=1, data_format='channels_last', name='MaxPool_1')(x)
-        x = Conv1D(64, kernel_size=1, name='Conv_2')(x)
-        x = MaxPooling1D(pool_size=1, data_format='channels_last', name='MaxPool_2')(x)
-        x = Conv1D(64, kernel_size=1, name='Conv_3')(x)
-        x = MaxPooling1D(pool_size=1, data_format='channels_last', name='MaxPool_3')(x)
-        x = Conv1D(64, kernel_size=1, name='Conv_4')(x)
-        x = MaxPooling1D(pool_size=1, data_format='channels_last', name='MaxPool_4')(x)
-        x = Conv1D(64, kernel_size=1, name='Conv_5')(x)
-        x = MaxPooling1D(pool_size=1, data_format='channels_last', name='MaxPool_5')(x)
-        x = Conv1D(64, kernel_size=1, name='Conv_6')(x)
-        x = MaxPooling1D(pool_size=1, data_format='channels_last', name='MaxPool_6')(x)
-        x = Conv1D(64, kernel_size=1, name='Conv_7')(x)
-        x = MaxPooling1D(pool_size=1, data_format='channels_last', name='MaxPool_7')(x)
-        x = Flatten(name='Flatten')(x)
-        x = Dense(128, activation='selu', name='Dense_1')(x)
-        x = Dense(128, activation='selu', name='Dense_2')(x)
-        x = Dense(self.num_classes, activation='softmax', name='Softmax')(x)
-        self.model = Model(inputs=inputs, outputs=x)
-        self.model.summary()
 
-    def build_model_baseline_2d(self):
+    def build_model_baseline(self):
         '''Build model architecture.'''
         print('*************** Building Baseline Model ***************')
         inputs = Input(shape=(1, 1024, 2), name='Input')

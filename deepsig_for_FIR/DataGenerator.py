@@ -46,7 +46,7 @@ class DataGenerator(keras.utils.Sequence):
         for i, idx in enumerate(indexes):
             X[i,] = self.X[idx]
             y[i] = self.Y[idx]
-        if self.is_2d:
+        if self.is_2d: # this is done just to use 2D models and add a new dimension
             X = np.expand_dims(X, 1)
         # print(X[0])
         # print(np.argmax(y))
