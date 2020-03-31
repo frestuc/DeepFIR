@@ -120,8 +120,9 @@ class DeepSig(object):
                 self.valid_indexes_BL, \
                 self.valid_indexes_FIR, \
                 self.test_indexes = pkl.load(f)
-                print('--------- Indexes check ----------')
-                print(len(self.train_indexes_BL)+len(self.train_indexes_FIR)+len(self.valid_indexes_BL)+len(self.valid_indexes_FIR)+len(self.test_indexes))
+
+            print('--------- Indexes check ----------')
+            print(len(self.train_indexes_BL)+len(self.train_indexes_FIR)+len(self.valid_indexes_BL)+len(self.valid_indexes_FIR)+len(self.test_indexes))
 
         else:
             if ~os.path.exists('indexes.pkl'):
@@ -172,7 +173,7 @@ class DeepSig(object):
 
 
         if self.args.train_cnn:
-            print('Generating data for Baseline')
+            print('********************* Generating data for Baseline *********************')
             self.train_generator_BL = DataGenerator(indexes=self.train_indexes_BL,
                                                  batch_size=self.args.batch_size,
                                                  data_path=self.args.data_path)
@@ -180,7 +181,7 @@ class DeepSig(object):
                                                  batch_size=self.args.batch_size,
                                                  data_path=self.args.data_path)
         if self.args.train_fir:
-            print('Generating data for FIR')
+            print('*********************  Generating data for FIR *********************')
             self.train_generator_FIR = DataGenerator(indexes=self.train_indexes_FIR,
                                                     batch_size=self.args.batch_size,
                                                     data_path=self.args.data_path)
@@ -188,6 +189,7 @@ class DeepSig(object):
                                                     batch_size=self.args.batch_size,
                                                     data_path=self.args.data_path)
 
+        print('*********************  Generating testing data *********************')
         self.test_generator = DataGenerator(indexes=self.test_indexes,
                                             batch_size=self.args.batch_size,
                                             data_path=self.args.data_path)        
@@ -214,7 +216,6 @@ class DeepSig(object):
         self.model.fit_generator(generator=self.train_generator_BL,
                                  steps_per_epoch = self.args.max_steps,
                                  epochs=self.args.epochs,
-                                 validation_steps=len(self.valid_generator_BL),
                                  validation_data=self.valid_generator_BL,
                                  shuffle=False,
                                  callbacks=call_backs,
