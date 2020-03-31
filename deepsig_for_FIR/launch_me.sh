@@ -15,10 +15,10 @@ python2 ./DeepSig.py \
         --h5_path /mnt/WDMyBook2/salvo/deepsig/2018.01/GOLD_XYZ_OSC.0001_1024.hdf5 \
         --data_path /mnt/WDMyBook2/salvo/deepsig/2018.01/GOLD_XYZ_OSC.0001_1024.hdf5 \
         --batch_size 32 \
-        --epochs 3 \
+        --epochs 10 \
         --fir_size 10 \
 	    --load_indexes \
-        --max_steps 100 \
+        --max_steps 5000 \
         --num_ex_mod 106496 \
         --num_classes 24 \
         --id_gpu $gpu \
