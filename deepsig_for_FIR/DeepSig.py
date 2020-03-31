@@ -42,6 +42,7 @@ class DeepSig(object):
         os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
         os.environ["CUDA_VISIBLE_DEVICES"] = str(self.args.id_gpu)
 
+        self.is_2d = True
         self.num_classes = self.args.num_classes
         self.num_examples_per_class = self.args.num_ex_mod
 
@@ -176,23 +177,23 @@ class DeepSig(object):
             print('********************* Generating data for Baseline *********************')
             self.train_generator_BL = DataGenerator(indexes=self.train_indexes_BL,
                                                  batch_size=self.args.batch_size,
-                                                 data_path=self.args.data_path, is_2d = False)
+                                                 data_path=self.args.data_path, is_2d = self.is_2d)
             self.valid_generator_BL = DataGenerator(indexes=self.valid_indexes_BL,
                                                  batch_size=self.args.batch_size,
-                                                 data_path=self.args.data_path, is_2d = False)
+                                                 data_path=self.args.data_path, is_2d = self.is_2d)
         if self.args.train_fir:
             print('*********************  Generating data for FIR *********************')
             self.train_generator_FIR = DataGenerator(indexes=self.train_indexes_FIR,
                                                     batch_size=self.args.batch_size,
-                                                    data_path=self.args.data_path, is_2d = False)
+                                                    data_path=self.args.data_path, is_2d = self.is_2d)
             self.valid_generator_FIR = DataGenerator(indexes=self.valid_indexes_FIR,
                                                     batch_size=self.args.batch_size,
-                                                    data_path=self.args.data_path, is_2d = False)
+                                                    data_path=self.args.data_path, is_2d = self.is_2d)
 
         print('*********************  Generating testing data *********************')
         self.test_generator = DataGenerator(indexes=self.test_indexes,
                                             batch_size=self.args.batch_size,
-                                            data_path=self.args.data_path, is_2d = False)
+                                            data_path=self.args.data_path, is_2d = self.is_2d)
     
 
     def train_baseline(self):
