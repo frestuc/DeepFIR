@@ -214,13 +214,13 @@ class DeepSig(object):
 
         start_time = time.time()
         self.model.fit_generator(generator=self.train_generator_BL,
-                                 steps_per_epoch = self.args.max_steps,
+                                 steps_per_epoch = self.args.max_steps if self.args.max_steps>0 else None,
                                  epochs=self.args.epochs,
                                  validation_steps=len(self.valid_generator_BL)//self.args.batch_size,
                                  validation_data=self.valid_generator_BL,
                                  shuffle=True,
                                  callbacks=call_backs,
-                                 use_multiprocessing=False,
+                                 use_multiprocessing=True,
                                  max_queue_size=100)
         train_time = time.time() - start_time
         print('Time to train model %0.3f s' % train_time)
@@ -245,12 +245,12 @@ class DeepSig(object):
 
         start_time = time.time()
         self.model.fit_generator(generator=self.train_generator_FIR,
-                                 steps_per_epoch=self.args.max_steps,
+                                 steps_per_epoch = self.args.max_steps if self.args.max_steps>0 else None,
                                  epochs=self.args.epochs,
                                  validation_data=self.valid_generator_FIR,
-                                 shuffle=False,
+                                 shuffle=True,
                                  callbacks=call_backs,
-                                 use_multiprocessing=False,
+                                 use_multiprocessing=True,
                                  max_queue_size=100)
         train_time = time.time() - start_time
         print('Time to train model %0.3f s' % train_time)
@@ -304,8 +304,8 @@ class DeepSig(object):
         parser = argparse.ArgumentParser(description = 'Train and Validation pipeline',
                                          formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-        parser.add_argument('--max_steps', type=int, default=None,
-                            help='Max number of batches.')
+        parser.add_argument('--max_steps', type=int, default=0,
+                            help='Max number of batches. If 0, it uses the whole dataset')
 
         parser.add_argument('--id_gpu', type=int, default=2,
                             help='GPU to use.')
