@@ -18,7 +18,7 @@ python2 ./DeepSig.py \
         --epochs 10 \
         --fir_size 10 \
 	    --load_indexes \
-        --max_steps 5000 \
+        --max_steps None \
         --num_ex_mod 106496 \
         --num_classes 24 \
         --id_gpu $gpu \
