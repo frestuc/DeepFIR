@@ -216,7 +216,7 @@ class DeepSig(object):
         self.model.fit_generator(generator=self.train_generator_BL,
                                  steps_per_epoch = self.args.max_steps,
                                  epochs=self.args.epochs,
-                                 validation_steps=self.valid_generator_BL//self.args.batch_size,
+                                 validation_steps=len(self.valid_generator_BL)//self.args.batch_size,
                                  validation_data=self.valid_generator_BL,
                                  shuffle=False,
                                  callbacks=call_backs,
