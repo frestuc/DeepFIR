@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7bf9813a-6ec9-491d-a25d-cee78f671760" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/launch_me.sh" beforeDir="false" afterPath="$PROJECT_DIR$/launch_me.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DeepSig.py" beforeDir="false" afterPath="$PROJECT_DIR$/DeepSig.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,23 +13,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DeepSig.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="218" column="59" lean-forward="true" selection-start-line="218" selection-start-column="59" selection-end-line="218" selection-end-column="59" />
+            <state relative-caret-position="334">
+              <caret line="219" column="70" selection-start-line="219" selection-start-column="70" selection-end-line="219" selection-end-column="70" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
+                <element signature="e#3431#5618#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DataGenerator.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="48" column="25" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#25#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/launch_me.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
-              <caret line="1" column="66" selection-start-line="1" selection-start-column="66" selection-end-line="1" selection-end-column="66" />
+            <state relative-caret-position="336">
+              <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -56,6 +69,7 @@
       <find>train_ccn</find>
       <find>epoch</find>
       <find>multip</find>
+      <find>batch_size</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -69,8 +83,8 @@
         <option value="$PROJECT_DIR$/test_garbage" />
         <option value="$PROJECT_DIR$/FIRLayer.py" />
         <option value="$PROJECT_DIR$/test_garbage.py" />
-        <option value="$PROJECT_DIR$/DeepSig.py" />
         <option value="$PROJECT_DIR$/launch_me.sh" />
+        <option value="$PROJECT_DIR$/DeepSig.py" />
       </list>
     </option>
   </component>
@@ -371,7 +385,21 @@
       <option name="project" value="LOCAL" />
       <updated>1585596050343</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="debugging starts">
+      <created>1585617260614</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1585617260614</updated>
+    </task>
+    <task id="LOCAL-00032" summary="debugging continues">
+      <created>1585617761434</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1585617761434</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TodoView">
@@ -417,7 +445,9 @@
     <MESSAGE value="might work now" />
     <MESSAGE value="Fixed typos" />
     <MESSAGE value="Fixed location of hdf5 files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed location of hdf5 files" />
+    <MESSAGE value="debugging starts" />
+    <MESSAGE value="debugging continues" />
+    <option name="LAST_COMMIT_MESSAGE" value="debugging continues" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Utils.py">
@@ -427,16 +457,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DistributeData.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="14" column="22" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/DistributeData.py" />
     <entry file="file://$PROJECT_DIR$/FIRLayer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-825">
@@ -495,23 +516,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/keras/utils/io_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1663">
-          <caret line="52" column="8" selection-start-line="52" selection-start-column="8" selection-end-line="52" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataGenerator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/keras/engine/training.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="248">
@@ -519,20 +523,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DeepSig.py">
+    <entry file="file://$PROJECT_DIR$/launch_me.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="218" column="59" lean-forward="true" selection-start-line="218" selection-start-column="59" selection-end-line="218" selection-end-column="59" />
+        <state relative-caret-position="336">
+          <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/keras/utils/io_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-987">
+          <caret line="13" column="36" lean-forward="true" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataGenerator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="48" column="25" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
           <folding>
-            <element signature="e#0#15#0" expanded="true" />
+            <element signature="e#0#25#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/launch_me.sh">
+    <entry file="file://$PROJECT_DIR$/DeepSig.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="1" column="66" selection-start-line="1" selection-start-column="66" selection-end-line="1" selection-end-column="66" />
+        <state relative-caret-position="334">
+          <caret line="219" column="70" selection-start-line="219" selection-start-column="70" selection-end-line="219" selection-end-column="70" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+            <element signature="e#3431#5618#0" />
+          </folding>
         </state>
       </provider>
     </entry>
