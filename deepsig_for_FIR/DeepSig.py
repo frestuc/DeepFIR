@@ -120,6 +120,8 @@ class DeepSig(object):
                 self.valid_indexes_BL, \
                 self.valid_indexes_FIR, \
                 self.test_indexes = pkl.load(f)
+                print('--------- Indexes check ----------')
+                print(len(self.train_indexes_BL)+len(self.train_indexes_FIR)+len(self.valid_indexes_BL)+len(self.valid_indexes_FIR)+len(self.test_indexes))
 
         else:
             if ~os.path.exists('indexes.pkl'):

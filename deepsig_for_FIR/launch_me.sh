@@ -17,7 +17,7 @@ python2 ./DeepSig.py \
         --batch_size 32 \
         --epochs 4 \
         --fir_size 10 \
-	--load_indexes \
+	    --load_indexes \
         --max_steps 500 \
         --num_ex_mod 106496 \
         --num_classes 24 \
