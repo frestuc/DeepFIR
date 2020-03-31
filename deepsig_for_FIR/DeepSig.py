@@ -220,7 +220,7 @@ class DeepSig(object):
                                  validation_data=self.valid_generator_BL,
                                  shuffle=True,
                                  callbacks=call_backs,
-                                 use_multiprocessing=True,
+                                 use_multiprocessing=False,
                                  max_queue_size=100)
         train_time = time.time() - start_time
         print('Time to train model %0.3f s' % train_time)
@@ -250,7 +250,7 @@ class DeepSig(object):
                                  validation_data=self.valid_generator_FIR,
                                  shuffle=True,
                                  callbacks=call_backs,
-                                 use_multiprocessing=True,
+                                 use_multiprocessing=False,
                                  max_queue_size=100)
         train_time = time.time() - start_time
         print('Time to train model %0.3f s' % train_time)
