@@ -218,7 +218,7 @@ class DeepSig(object):
                                  epochs=self.args.epochs,
                                  validation_steps=len(self.valid_generator_BL)//self.args.batch_size,
                                  validation_data=self.valid_generator_BL,
-                                 shuffle=False,
+                                 shuffle=True,
                                  callbacks=call_backs,
                                  use_multiprocessing=False,
                                  max_queue_size=100)
