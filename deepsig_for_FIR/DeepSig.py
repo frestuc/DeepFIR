@@ -120,10 +120,6 @@ class DeepSig(object):
                 self.valid_indexes_BL, \
                 self.valid_indexes_FIR, \
                 self.test_indexes = pkl.load(f)
-
-            print('--------- Indexes check ----------')
-            print(len(self.train_indexes_BL)+len(self.train_indexes_FIR)+len(self.valid_indexes_BL)+len(self.valid_indexes_FIR)+len(self.test_indexes))
-
         else:
             if ~os.path.exists('indexes.pkl'):
                 print('--------- Creating indexes and saving them in indexes.pkl -----------')
@@ -170,6 +166,10 @@ class DeepSig(object):
                               self.test_indexes], f)
             else:
                 print('File indexes.pkl already exists! I am using the old one')
+
+            print('--------- Indexes check ----------')
+            print(len(self.train_indexes_BL) + len(self.train_indexes_FIR) + len(self.valid_indexes_BL) + len(
+                self.valid_indexes_FIR) + len(self.test_indexes))
 
 
         if self.args.train_cnn:

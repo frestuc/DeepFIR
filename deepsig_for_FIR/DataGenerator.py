@@ -46,9 +46,9 @@ class DataGenerator(keras.utils.Sequence):
             X[i,] = self.X[idx]
             y[i] = self.Y[idx]
         X = np.expand_dims(X, 1)
-        #print('SHAPE: ', X.shape) 
-        #X = np.transpose(X, (0, 1, 3, 2))
-        #print(np.argmax(y))
+        print('SHAPE: ', X.shape)
+        X = np.transpose(X, (0, 1, 3, 2))
+        print(np.argmax(y))
         return X, y
 
     def __fetch_index(self, index):
