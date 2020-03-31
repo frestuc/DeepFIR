@@ -78,7 +78,7 @@ class DeepSig(object):
     def build_model_baseline(self):
         '''Build model architecture.'''
         print('*************** Building Baseline Model ***************')
-        inputs = Input(shape=(1, 1024, 2), name = 'Input')
+        inputs = Input(shape=(1024, 2), name = 'Input')
         x = Conv1D(64, kernel_size=1, name = 'Conv_1')(inputs)
         x = MaxPooling1D(pool_size=1, data_format='channels_last', name = 'MaxPool_1')(x)
         x = Conv1D(64, kernel_size=1, name = 'Conv_2')(x)
