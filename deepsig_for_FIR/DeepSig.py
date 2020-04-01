@@ -83,8 +83,10 @@ class DeepSig(object):
         #test
 
         inputs = Input(shape=(1, 1024, 2), name='Input')
-        x = FIRLayer(output_dim=(1, 1024, 2), filter_dim=self.args.fir_size, channels=1, verbose=1, input_shape=(1, 1024, 2))(
-            inputs, name = 'FIR_layer')
+        # FIRLayer(output_dim=slice_size, filter_dim=fir_size, channels=1, verbose=1, input_shape=(slice_size, 2)))
+        # x = FIRLayer(output_dim=(1, 1024, 2), filter_dim=self.args.fir_size, channels=1, verbose=1, input_shape=(1, 1024, 2), name = 'FIR_layer')(
+        #     inputs)
+        x = FIRLayer(output_dim=1024, filter_dim=self.args.fir_size, channels=1, verbose=1, input_shape=(1, 1024, 2), name = 'FIR_layer')(inputs)
         x = Conv2D(64, kernel_size=1, name='Conv_1', trainable = False)(x)
         x = MaxPooling2D(pool_size=(1, 2), data_format='channels_last', name='MaxPool_1', trainable = False)(x)
         x = Conv2D(64, kernel_size=1, name='Conv_2', trainable = False)(x)
