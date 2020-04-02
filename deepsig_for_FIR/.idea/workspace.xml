@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7bf9813a-6ec9-491d-a25d-cee78f671760" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DeepSig.py" beforeDir="false" afterPath="$PROJECT_DIR$/DeepSig.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/indexes.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/indexes.pkl" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,11 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DeepSig.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="461">
-              <caret line="339" column="90" selection-start-line="339" selection-start-column="90" selection-end-line="339" selection-end-column="90" />
+            <state relative-caret-position="104">
+              <caret line="214" column="12" selection-start-line="214" selection-start-column="12" selection-end-line="214" selection-end-column="12" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -25,10 +25,19 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/keras/engine/training_generator.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="147">
+              <caret line="190" column="40" selection-start-line="190" selection-start-column="40" selection-end-line="190" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DataGenerator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="113">
+            <state relative-caret-position="239">
               <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
@@ -41,28 +50,10 @@
         <entry file="file://$PROJECT_DIR$/FIRLayer.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="544">
-              <caret line="29" column="85" lean-forward="true" selection-start-line="28" selection-start-column="12" selection-end-line="29" selection-end-column="85" />
+              <caret line="29" column="85" selection-start-line="28" selection-start-column="12" selection-end-line="29" selection-end-column="85" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/launch_me_cpu.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="12" column="2" lean-forward="true" selection-start-line="12" selection-end-line="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/launch_me.sh">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="13" column="15" selection-start-line="13" selection-end-line="14" />
             </state>
           </provider>
         </entry>
@@ -98,6 +89,8 @@
       <find>fir_model_name</find>
       <find>train_fir_perdev</find>
       <find>train_fir_per</find>
+      <find>shuffle</find>
+      <find>generator</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -114,6 +107,7 @@
         <option value="$PROJECT_DIR$/launch_me_cpu.sh" />
         <option value="$PROJECT_DIR$/launch_me.sh" />
         <option value="$PROJECT_DIR$/DeepSig.py" />
+        <option value="$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/keras/engine/training_generator.py" />
       </list>
     </option>
   </component>
@@ -164,7 +158,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.cpu_deepsig">
+  <component name="RunManager" selected="Python.cpu_deepsig_load">
     <configuration name="launch_me_cpu.sh" type="BashConfigurationType" factoryName="Bash" temporary="true">
       <module name="deepsig_for_FIR" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -189,7 +183,28 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DeepSig.py" />
-      <option name="PARAMETERS" value="--train_fir --h5_path C:\Users\totix\Desktop\darpa\bin_files\2018.01\GOLD_XYZ_OSC.0001_1024.hdf5 --data_path C:\Users\totix\Desktop\darpa\bin_files\2018.01\GOLD_XYZ_OSC.0001_1024.hdf5 --batch_size 32 --epochs 10 --fir_size 100 --load_indexes --max_steps 0 --num_ex_mod 106496 --num_classes 24 --patience 5" />
+      <option name="PARAMETERS" value="--train_cnn --h5_path C:\Users\totix\Desktop\darpa\bin_files\2018.01\GOLD_XYZ_OSC.0001_1024.hdf5 --data_path C:\Users\totix\Desktop\darpa\bin_files\2018.01\GOLD_XYZ_OSC.0001_1024.hdf5 --batch_size 32 --epochs 10 --fir_size 100 --max_steps 20 --num_ex_mod 106496 --num_classes 24 --patience 5" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="cpu_deepsig_load" type="PythonConfigurationType" factoryName="Python">
+      <module name="deepsig_for_FIR" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\totix\AppData\Local\Programs\Python\Python37\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DeepSig.py" />
+      <option name="PARAMETERS" value="--train_cnn --h5_path C:\Users\totix\Desktop\darpa\bin_files\2018.01\GOLD_XYZ_OSC.0001_1024.hdf5 --data_path C:\Users\totix\Desktop\darpa\bin_files\2018.01\GOLD_XYZ_OSC.0001_1024.hdf5 --batch_size 32 --epochs 10 --fir_size 100 --max_steps 20 --load_indexes --num_ex_mod 106496 --num_classes 24 --patience 5" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -220,6 +235,7 @@
     </configuration>
     <list>
       <item itemvalue="Bash.launch_me_cpu.sh" />
+      <item itemvalue="Python.cpu_deepsig_load" />
       <item itemvalue="Python.cpu_deepsig" />
       <item itemvalue="Python.test_garbage" />
     </list>
@@ -240,20 +256,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1585323849391</updated>
-    </task>
-    <task id="LOCAL-00012" summary="fixed bash script">
-      <created>1585578005504</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1585578005504</updated>
-    </task>
-    <task id="LOCAL-00013" summary="fixed bash script">
-      <created>1585578368270</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1585578368270</updated>
     </task>
     <task id="LOCAL-00014" summary="fixed bash script">
       <created>1585578501089</created>
@@ -584,7 +586,21 @@
       <option name="project" value="LOCAL" />
       <updated>1585841052560</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="Now per device training is feasible">
+      <created>1585841278694</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1585841278694</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Training of each FIR works. Now time to avoid overfitting">
+      <created>1585848697603</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1585848697603</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TodoView">
@@ -605,11 +621,11 @@
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" weight="0.3314231" />
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="2" visible="true" weight="0.32922202" />
+      <window_info anchor="bottom" id="Python Console" order="2" weight="0.32922202" />
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Find" order="4" />
       <window_info anchor="bottom" id="Version Control" order="5" weight="0.32922202" />
-      <window_info anchor="bottom" id="Run" order="6" weight="0.32922202" />
+      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.5113852" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.39943075" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -639,7 +655,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added utils to read mat files" />
     <MESSAGE value="Saving indexes and starting integratinf FIR + basleine models" />
     <MESSAGE value="Removed DistributeData as it is never used" />
     <MESSAGE value="WOrking on loading weights over a model with FIR layers. NEed to double check weiaghts are actually the same" />
@@ -664,7 +679,8 @@
     <MESSAGE value="fixed FIR layer shapes, time to train" />
     <MESSAGE value="Now we should be able to train a FIR per device" />
     <MESSAGE value="Now per device training is feasible" />
-    <option name="LAST_COMMIT_MESSAGE" value="Now per device training is feasible" />
+    <MESSAGE value="Training of each FIR works. Now time to avoid overfitting" />
+    <option name="LAST_COMMIT_MESSAGE" value="Training of each FIR works. Now time to avoid overfitting" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Utils.py">
@@ -765,13 +781,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/keras/engine/training.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15927">
-          <caret line="1277" column="8" selection-start-line="1277" selection-start-column="8" selection-end-line="1277" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test_garbage.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="346">
@@ -785,27 +794,10 @@
     <entry file="file://$PROJECT_DIR$/FIRLayer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
-          <caret line="29" column="85" lean-forward="true" selection-start-line="28" selection-start-column="12" selection-end-line="29" selection-end-column="85" />
+          <caret line="29" column="85" selection-start-line="28" selection-start-column="12" selection-end-line="29" selection-end-column="85" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataGenerator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/launch_me_cpu.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" column="2" lean-forward="true" selection-start-line="12" selection-end-line="13" />
         </state>
       </provider>
     </entry>
@@ -816,13 +808,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/launch_me_cpu.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="7" column="39" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataGenerator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/keras/engine/training.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="1404" column="39" selection-start-line="1404" selection-start-column="39" selection-end-line="1404" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/DeepSig.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="339" column="90" selection-start-line="339" selection-start-column="90" selection-end-line="339" selection-end-column="90" />
+        <state relative-caret-position="104">
+          <caret line="214" column="12" selection-start-line="214" selection-start-column="12" selection-end-line="214" selection-end-column="12" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/keras/engine/training_generator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="190" column="40" selection-start-line="190" selection-start-column="40" selection-end-line="190" selection-end-column="40" />
         </state>
       </provider>
     </entry>
