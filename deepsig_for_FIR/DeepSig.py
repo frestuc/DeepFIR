@@ -117,7 +117,8 @@ class DeepSig(object):
         if self.args.load_indexes:
             print('--------- Loading from File indexes.pkl ---------')
             # Getting back the objects:
-            with open('indexes.pkl', 'r') as f:  # Python 3: open(..., 'rb')
+            with open('indexes.pkl', 'rb') as f:  # Python 3: open(..., 'rb')
+                print(f)
                 self.train_indexes_BL, \
                 self.train_indexes_FIR, \
                 self.valid_indexes_BL, \
@@ -161,7 +162,7 @@ class DeepSig(object):
                         [x + (i + 1) * self.num_examples_per_class for x in test_indexes])
 
                 # Saving the objects:
-                with open('indexes.pkl', 'w') as f:  # Python 3: open(..., 'wb')
+                with open('indexes.pkl', 'wb') as f:  # Python 3: open(..., 'wb')
                     pkl.dump([self.train_indexes_BL,
                               self.train_indexes_FIR,
                               self.valid_indexes_BL,
