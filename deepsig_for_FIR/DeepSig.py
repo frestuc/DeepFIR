@@ -268,7 +268,7 @@ class DeepSig(object):
                            metrics=['accuracy'])
         call_backs = []
         checkpoint = CustomModelCheckpoint(
-            os.path.join(self.args.save_path, 'per_dev', self.args.fir_model_name.split('.')[0] + '_' + dev_id + '.hdf5'),
+            os.path.join(self.args.save_path, 'per_dev', self.args.fir_model_name.split('.')[0] + '_' + str(dev_id) + '.hdf5'),
             monitor='val_acc', verbose=1, save_best_only=True)
         call_backs.append(checkpoint)
         earlystop_callback = EarlyStopping(
