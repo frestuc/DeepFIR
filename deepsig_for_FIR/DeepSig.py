@@ -337,9 +337,7 @@ class DeepSig(object):
             print('*********************  Generating testing data for Class %d ***************' % dev_id)
             test_indexes_FIR = np.where(np.logical_and(self.test_indexes >= dev_id * self.num_examples_per_class, self.test_indexes < ((dev_id + 1) * self.num_examples_per_class - 1)))
 
-            test_generator_FIR = DataGenerator(indexes=self.test_indexes[np.argwhere(
-                self.test_indexes >= dev_id * self.num_examples_per_class and self.test_indexes < (
-                            (dev_id + 1) * self.num_examples_per_class - 1))].squeeze(),
+            test_generator_FIR = DataGenerator(indexes=self.test_indexes[test_indexes_FIR],
                                                     batch_size=self.args.batch_size,
                                                     data_path=self.args.data_path, is_2d=self.is_2d)
 
