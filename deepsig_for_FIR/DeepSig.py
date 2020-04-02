@@ -278,6 +278,8 @@ class DeepSig(object):
 
         dataset_index_per_device = dev_id * self.num_examples_per_class + np.array(range(self.num_examples_per_class))
 
+        print(np.argwhere(self.train_indexes_FIR>=dev_id * self.num_examples_per_class and self.train_indexes_FIR < ((dev_id+1) * self.num_examples_per_class-1)))
+
         print('*********************  Generating data for FIR for Class %d ***************' % dev_id)
         self.train_generator_FIR = DataGenerator(indexes=self.train_indexes_FIR[np.argwhere(self.train_indexes_FIR>=dev_id * self.num_examples_per_class and self.train_indexes_FIR < ((dev_id+1) * self.num_examples_per_class-1))].squeeze(),
                                                  batch_size=self.args.batch_size,
