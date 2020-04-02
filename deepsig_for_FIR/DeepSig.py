@@ -276,15 +276,15 @@ class DeepSig(object):
             verbose=1, mode='auto')
         call_backs.append(earlystop_callback)
 
-        dataset_index_per_device = dev_id * self.num_examples_per_class + np.array(range(self.num_examples_per_class))
-
-        print(np.argwhere(self.train_indexes_FIR>=dev_id * self.num_examples_per_class and self.train_indexes_FIR < ((dev_id+1) * self.num_examples_per_class-1)))
+        # dataset_index_per_device = dev_id * self.num_examples_per_class + np.array(range(self.num_examples_per_class))
+        train_where = np.where(np.logical_and(self.train_indexes_FIR>=dev_id * self.num_examples_per_class, self.train_indexes_FIR < ((dev_id+1) * self.num_examples_per_class-1)))
+        valid_indexes_FIR = np.where(np.logical_and(self.valid_indexes_FIR >= dev_id * self.num_examples_per_class, self.valid_indexes_FIR < ((dev_id + 1) * self.num_examples_per_class - 1)))
 
         print('*********************  Generating data for FIR for Class %d ***************' % dev_id)
-        self.train_generator_FIR = DataGenerator(indexes=self.train_indexes_FIR[np.argwhere(self.train_indexes_FIR>=dev_id * self.num_examples_per_class and self.train_indexes_FIR < ((dev_id+1) * self.num_examples_per_class-1))].squeeze(),
+        self.train_generator_FIR = DataGenerator(indexes=self.train_indexes_FIR[train_where],
                                                  batch_size=self.args.batch_size,
                                                  data_path=self.args.data_path, is_2d=self.is_2d)
-        self.valid_generator_FIR = DataGenerator(indexes=self.valid_indexes_FIR[np.argwhere(self.valid_indexes_FIR>=dev_id * self.num_examples_per_class and self.valid_indexes_FIR < ((dev_id+1) * self.num_examples_per_class-1))].squeeze(),
+        self.valid_generator_FIR = DataGenerator(indexes=self.valid_indexes_FIR[valid_indexes_FIR],
                                                  batch_size=self.args.batch_size,
                                                  data_path=self.args.data_path, is_2d=self.is_2d)
 
@@ -335,6 +335,8 @@ class DeepSig(object):
                                metrics=['accuracy'])
 
             print('*********************  Generating testing data for Class %d ***************' % dev_id)
+            test_indexes_FIR = np.where(np.logical_and(self.test_indexes >= dev_id * self.num_examples_per_class, self.test_indexes < ((dev_id + 1) * self.num_examples_per_class - 1)))
+
             test_generator_FIR = DataGenerator(indexes=self.test_indexes[np.argwhere(
                 self.test_indexes >= dev_id * self.num_examples_per_class and self.test_indexes < (
                             (dev_id + 1) * self.num_examples_per_class - 1))].squeeze(),
@@ -353,7 +355,7 @@ class DeepSig(object):
             self.build_model_baseline()
             self.load_data()
             self.train_baseline()
-            self.test()
+            self.test(0)
         elif self.args.train_fir_perdev:
             for d in range(self.num_classes):
                 self.build_model_FIR()
@@ -364,7 +366,7 @@ class DeepSig(object):
             self.build_model_FIR()
             self.load_data()
             self.train_FIR()
-            self.test()
+            self.test(0)
         else:
             print('EXITING - Please specify model to be trained')
 
