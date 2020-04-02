@@ -259,7 +259,47 @@ class DeepSig(object):
         print('Time to train model %0.3f s' % train_time)
         self.best_model_path = checkpoint.best_path
 
-    def test(self):
+    def train_FIR_per_dev(self, dev_id):
+        '''Train model through Keras framework.'''
+        print('*************** Training Model for Class %d ***************' % dev_id)
+        optimizer = Adam(lr=0.0001)
+        self.model.compile(loss='categorical_crossentropy',
+                           optimizer=optimizer,
+                           metrics=['accuracy'])
+        call_backs = []
+        checkpoint = CustomModelCheckpoint(
+            os.path.join(self.args.save_path, 'per_dev', self.args.fir_model_name.split('.')[0] + '_' + dev_id + '.hdf5'),
+            monitor='val_acc', verbose=1, save_best_only=True)
+        call_backs.append(checkpoint)
+        earlystop_callback = EarlyStopping(
+            monitor='val_acc', min_delta=0, patience=self.args.patience,
+            verbose=1, mode='auto')
+        call_backs.append(earlystop_callback)
+
+        dataset_index_per_device = dev_id * self.num_examples_per_class + np.array(range(self.num_examples_per_class))
+
+        print('*********************  Generating data for FIR for Class %d ***************' % dev_id)
+        self.train_generator_FIR = DataGenerator(indexes=self.train_indexes_FIR[np.argwhere(self.train_indexes_FIR>=dev_id * self.num_examples_per_class and self.train_indexes_FIR < ((dev_id+1) * self.num_examples_per_class-1))].squeeze(),
+                                                 batch_size=self.args.batch_size,
+                                                 data_path=self.args.data_path, is_2d=self.is_2d)
+        self.valid_generator_FIR = DataGenerator(indexes=self.valid_indexes_FIR[np.argwhere(self.valid_indexes_FIR>=dev_id * self.num_examples_per_class and self.valid_indexes_FIR < ((dev_id+1) * self.num_examples_per_class-1))].squeeze(),
+                                                 batch_size=self.args.batch_size,
+                                                 data_path=self.args.data_path, is_2d=self.is_2d)
+
+        start_time = time.time()
+        self.model.fit_generator(generator=self.train_generator_FIR,
+                                 steps_per_epoch = self.args.max_steps if self.args.max_steps>0 else None,
+                                 epochs=self.args.epochs,
+                                 validation_data=self.valid_generator_FIR,
+                                 shuffle=True,
+                                 callbacks=call_backs,
+                                 use_multiprocessing=False,
+                                 max_queue_size=100)
+        train_time = time.time() - start_time
+        print('Time to train model %0.3f s' % train_time)
+        self.best_model_path = checkpoint.best_path
+
+    def test(self, dev_id):
         '''Test the trained model.
         X = HDF5Matrix(self.args.data_path, 'X')
         Y = HDF5Matrix(self.args.data_path, 'Y')
@@ -277,13 +317,33 @@ class DeepSig(object):
         print 'Test accuracy: ', acc
         '''
         #self.model.load_weights('/home/bruno/deepsig3/weights.hdf5')
-        optimizer = Adam(lr=0.0001)
-        self.model.compile(loss='categorical_crossentropy',
-                           optimizer=optimizer,
-                           metrics=['accuracy'])
-        score = self.model.evaluate_generator(self.test_generator, verbose=1,
-                                              use_multiprocessing = False)
-        print(score)
+
+        if dev_id == 0:
+            optimizer = Adam(lr=0.0001)
+            self.model.compile(loss='categorical_crossentropy',
+                               optimizer=optimizer,
+                               metrics=['accuracy'])
+            score = self.model.evaluate_generator(self.test_generator, verbose=1,
+                                                  use_multiprocessing = False)
+            print(score)
+        else:
+            optimizer = Adam(lr=0.0001)
+            self.model.compile(loss='categorical_crossentropy',
+                               optimizer=optimizer,
+                               metrics=['accuracy'])
+
+            print('*********************  Generating testing data for Class %d ***************' % dev_id)
+            test_generator_FIR = DataGenerator(indexes=self.test_indexes[np.argwhere(
+                self.test_indexes >= dev_id * self.num_examples_per_class and self.test_indexes < (
+                            (dev_id + 1) * self.num_examples_per_class - 1))].squeeze(),
+                                                    batch_size=self.args.batch_size,
+                                                    data_path=self.args.data_path, is_2d=self.is_2d)
+
+            ########
+            #### compute indexed_per div_id
+            score = self.model.evaluate_generator(test_generator_FIR, verbose=1,
+                                                  use_multiprocessing=False)
+            print(score)
 
     def run(self):
         '''Run different steps in model pipeline.'''
@@ -292,6 +352,12 @@ class DeepSig(object):
             self.load_data()
             self.train_baseline()
             self.test()
+        elif self.args.train_fir_perdev:
+            for d in range(self.num_classes):
+                self.build_model_FIR()
+                self.load_data()
+                self.train_FIR_per_dev(d)
+                self.test(d)
         elif self.args.train_fir:
             self.build_model_FIR()
             self.load_data()
@@ -326,7 +392,10 @@ class DeepSig(object):
                             help='Train CNN.')
 
         parser.add_argument('--train_fir', action='store_true',
-                            help='Train CNN.')
+                            help='Train FIR one for all.')
+
+        parser.add_argument('--train_fir_perdev', action='store_true',
+                            help='Train FIR one per device.')
 
         parser.add_argument('--num_classes', type=int, default=24,
                             help='Number of classes in the dataset.')
