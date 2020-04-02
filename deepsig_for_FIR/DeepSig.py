@@ -320,7 +320,7 @@ class DeepSig(object):
         '''
         #self.model.load_weights('/home/bruno/deepsig3/weights.hdf5')
 
-        if dev_id == 0:
+        if dev_id < 0:
             optimizer = Adam(lr=0.0001)
             self.model.compile(loss='categorical_crossentropy',
                                optimizer=optimizer,
@@ -355,7 +355,7 @@ class DeepSig(object):
             self.build_model_baseline()
             self.load_data()
             self.train_baseline()
-            self.test(0)
+            self.test(-1)
         elif self.args.train_fir_perdev:
             for d in range(self.num_classes):
                 self.build_model_FIR()
@@ -364,9 +364,9 @@ class DeepSig(object):
                 self.test(d)
         elif self.args.train_fir:
             self.build_model_FIR()
-            self.load_data()
             self.train_FIR()
-            self.test(0)
+            self.load_data()
+            self.test(-1)
         else:
             print('EXITING - Please specify model to be trained')
 
