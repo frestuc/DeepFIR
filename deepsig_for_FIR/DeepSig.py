@@ -46,7 +46,7 @@ class DeepSig(object):
         self.num_classes = self.args.num_classes
         self.num_examples_per_class = self.args.num_ex_mod
 
-        if self.args.train_cnn or self.args.train_fir:
+        if self.args.train_cnn or self.args.train_fir or self.args.train_fir_perdev:
             self.run()
         else:
             print('You are not training any model')
