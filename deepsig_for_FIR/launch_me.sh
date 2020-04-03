@@ -11,14 +11,13 @@ gpu=$1
 # --data_path /mnt/WDMyBook2/salvo/deepsig/2018.01/GOLD_XYZ_OSC.0001_1024.hdf5 \
 ​
 python2 ./DeepSig.py \
-        --train_cnn \
+        --train_fir_perdev \
 	--load_indexes \
         --h5_path /mnt/WDMyBook2/salvo/deepsig/2018.01/GOLD_XYZ_OSC.0001_1024.hdf5 \
         --data_path /mnt/WDMyBook2/salvo/deepsig/2018.01/GOLD_XYZ_OSC.0001_1024.hdf5 \
-        --batch_size 32 \
-        --epochs 15 \
+        --batch_size 128 \
+        --epochs 50 \
         --fir_size 100 \
-        --max_steps 1000 \
         --num_ex_mod 106496 \
         --num_classes 24 \
         --id_gpu $gpu \
