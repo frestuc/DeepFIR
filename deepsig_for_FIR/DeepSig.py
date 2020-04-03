@@ -86,7 +86,7 @@ class DeepSig(object):
         # FIRLayer(output_dim=slice_size, filter_dim=fir_size, channels=1, verbose=1, input_shape=(slice_size, 2)))
         # x = FIRLayer(output_dim=(1, 1024, 2), filter_dim=self.args.fir_size, channels=1, verbose=1, input_shape=(1, 1024, 2), name = 'FIR_layer')(
         #     inputs)
-        x = FIRLayer(output_dim=1024, filter_dim=self.args.fir_size, channels=1, verbose=1, input_shape=(1, 1024, 2), name = 'FIR_layer')(inputs)
+        x = FIRLayer(output_dim=1024, filter_dim=self.args.fir_size, channels=1, verbose=0, input_shape=(1, 1024, 2), name = 'FIR_layer')(inputs)
         x = Conv2D(64, kernel_size=1, name='Conv_1', trainable = False)(x)
         x = MaxPooling2D(pool_size=(1, 2), data_format='channels_last', name='MaxPool_1', trainable = False)(x)
         x = Conv2D(64, kernel_size=1, name='Conv_2', trainable = False)(x)
@@ -107,7 +107,9 @@ class DeepSig(object):
         x = Dense(self.num_classes, activation='softmax', name='Softmax', trainable = False)(x)
         self.model = Model(inputs=inputs, outputs=x)
         self.model.summary()
+        # print(os.path.join(self.args.save_path, self.args.bl_model_name))
         self.model.load_weights(os.path.join(self.args.save_path, self.args.bl_model_name), by_name=True, skip_mismatch=True, reshape=False)
+        # exit()
 
 
     def load_data(self):
@@ -300,6 +302,7 @@ class DeepSig(object):
                                  max_queue_size=100)
         train_time = time.time() - start_time
         print('Time to train model %0.3f s' % train_time)
+        ## SALVO this must be uncommented before push
         self.best_model_path = checkpoint.best_path
 
     def test(self, dev_id):
@@ -363,8 +366,8 @@ class DeepSig(object):
                 self.test(d)
         elif self.args.train_fir:
             self.build_model_FIR()
-            self.train_FIR()
             self.load_data()
+            self.train_FIR()
             self.test(-1)
         else:
             print('EXITING - Please specify model to be trained')
@@ -409,7 +412,7 @@ class DeepSig(object):
         parser.add_argument('--fir_size', type=int, default=10,
                             help='Number of classes in the dataset.')
 
-        parser.add_argument('--save_path', type=str, default='/home/salvo/deepsig_res',
+        parser.add_argument('--save_path', type=str, default='./home/salvo/deepsig_res',
                             help='Path to save weights, model architecture, and logs.')
 
         parser.add_argument('--h5_path', type=str,

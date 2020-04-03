@@ -9,10 +9,10 @@ class FIRInitializer(Initializer):
     
     def __call__(self, shape, dtype=None):
 #        print 'FIRInitializer shape: ', shape
-        scale = np.sqrt(1.0/shape[0])
-        #tensor = np.zeros(shape=shape)
-        tensor = np.random.normal(loc=0.0, scale=scale, size=shape)
+#         scale = np.sqrt(1.0/shape[0])
+        tensor = np.zeros(shape=shape)
+        # tensor = np.random.normal(loc=0.0, scale=scale, size=shape)
         tensor[0][0] = 1
         tensor = K.variable(tensor)
-        #print 'FIR init weight: ', K.eval(tensor)
+        # print('FIR init weight: ', K.eval(tensor))
         return tensor
