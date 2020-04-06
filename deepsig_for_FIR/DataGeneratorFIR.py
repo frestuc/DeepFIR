@@ -13,7 +13,7 @@ from keras.utils.io_utils import HDF5Matrix
 import Utils
 
 
-class DataGeneratorFIR(DataGenerator):
+class DataGeneratorFIR(keras.utils.Sequence):
     'Generates data for Keras.'
 
     def __init__(self, indexes, batch_size, data_path, shuffle=False, is_2d = False,
@@ -38,7 +38,7 @@ class DataGeneratorFIR(DataGenerator):
                     self.shape_FIR = np.delete(shape_var,trivial_dimension)
                 self.fir_taps = np.zeros(self.shape_FIR)
 
-            # start reading the taps
+            # SALVO start reading the taps
             self.fir_taps[:,:,d] = f['model_weights'][FIR_layer_name][FIR_layer_name][taps_name+':0'][:]
 
         self.X = HDF5Matrix(self.data_path, 'X')

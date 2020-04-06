@@ -11,8 +11,10 @@ import os
 from keras.models import Model
 from keras.optimizers import Adam
 
+from keras.utils.io_utils import HDF5Matrix
 from DataGenerator import DataGenerator
 from DataGeneratorFIR import DataGeneratorFIR
+from sklearn.metrics import confusion_matrix
 
 class DeepSigTesting(object):
     '''Class to test model described in paper
@@ -36,7 +38,6 @@ class DeepSigTesting(object):
         self.is_2d = True
 
         self.num_classes = self.args.num_classes
-        self.num_examples_per_class = self.args.num_ex_mod
 
         if self.args.test_single_model or self.args.test_perdev_model:
             self.run()
@@ -93,7 +94,7 @@ class DeepSigTesting(object):
                                                 models_path = self.args.models_path,
                                                 model_name = self.args.fir_model_name,
                                                 taps_name = self.args.taps_name,
-                                                FIR_layer_name = self.args.FIR_Layer_name,
+                                                FIR_layer_name = self.args.fir_layer_name,
                                                 num_classes = self.num_classes)
 
         else:
@@ -105,12 +106,25 @@ class DeepSigTesting(object):
                            optimizer=optimizer,
                            metrics=['accuracy'])
 
-        score_eval = self.model.evaluate_generator(self.test_generator, verbose=1, use_multiprocessing = False)
-        print(score_eval)
+        # score_eval = self.model.evaluate_generator(self.test_generator, verbose=1, use_multiprocessing = False)
+        # print(score_eval)
         score_predict = self.model.predict_generator(self.test_generator, verbose=1, use_multiprocessing = False)
+        label_predict = np.argmax(score_predict,1)
 
-        my_dict = {'overall_accuracy' : score_eval[1],
-                   'confusion_matrix' : score_predict}
+        Y_real = HDF5Matrix(self.args.data_path, 'Y')
+        label_true = np.zeros(label_predict.shape)
+        for i in range(label_predict.shape[0]):
+            # print('Index : ', self.test_indexes[i])
+            # print(Y_real.__getitem__(self.test_indexes[i]))
+            # print(np.argmax(Y_real.__getitem__(self.test_indexes[i])))
+            label_true[i] = np.argmax(Y_real.__getitem__(self.test_indexes[i]))
+
+        con_matrix = confusion_matrix(label_true, label_predict)
+        con_matrix_perc = con_matrix/ con_matrix.astype(np.float).sum(axis=1)
+        accuracy = np.mean(np.diag(con_matrix_perc))
+
+        my_dict = {'overall_accuracy' : accuracy,
+                   'confusion_matrix' : con_matrix_perc}
 
         # Saving the objects:
         save_name = os.path.join(self.args.save_path,(self.args.save_file_name + '.pkl'))
@@ -120,11 +134,11 @@ class DeepSigTesting(object):
 
     def run(self):
         '''Run different steps in model pipeline.'''
-        if self.args.test_single_model:
+        if self.args.test_single_model: # This is used to test the same model for all classes
             self.load_model()
             self.load_testing_data()
             self.test_model()
-        elif self.args.test_perdev_model:
+        elif self.args.test_perdev_model: # this is used to test same architecture, but FIRs are different for each class
             self.load_model()
             self.load_testing_data_for_FIR()
             self.test_model()
@@ -143,19 +157,19 @@ class DeepSigTesting(object):
         parser.add_argument('--model_name', type=str, default='./home/salvo/deepsig_res/modulation_model.hdf5',
                             help='Name of baseline model.')
 
-        parser.add_argument('--FIR_model_name', type=str, default='FIR_model',
+        parser.add_argument('--fir_model_name', type=str, default='FIR_model',
                             help='Name of the FIR model without the hdf5 extension, just the prefix used to generate them.')
 
-        parser.add_argument('--FIR_taps_name', type=str, default='phi',
+        parser.add_argument('--taps_name', type=str, default='phi',
                             help='Name of the variable storing the taps.')
 
-        parser.add_argument('--FIR_layer_name', type=str, default='FIR_layer',
+        parser.add_argument('--fir_layer_name', type=str, default='FIR_layer',
                             help='Name of the FIR layer in Keras, this is usually FIR_layer when you create the model.')
 
         parser.add_argument('--models_path', type=str, default='./home/salvo/deepsig_res/per_dev',
                             help='Path where all FIR models are saved.')
 
-        parser.add_argument('--index_file', type='str', default = 'indexes.pkl',
+        parser.add_argument('--index_file', type=str, default = 'indexes.pkl',
                             help='Name of index pickle file, usually we store a dictionary "indexes.pkl" with indexes in there. MUST contain a "test_indexes" variable')
 
         parser.add_argument('--test_single_model', action='store_true',
@@ -173,7 +187,7 @@ class DeepSigTesting(object):
         parser.add_argument('--save_path', type=str, default='./home/salvo/deepsig_res',
                             help='Path to save weights, model architecture, and logs.')
 
-        parser.add_argument('--save_fine_name', type=str, default='results.pkl',
+        parser.add_argument('--save_file_name', type=str, default='results.pkl',
                             help='File name to save, results are saved in save_path.')
 
         parser.add_argument('--data_path', type=str,
@@ -184,3 +198,6 @@ class DeepSigTesting(object):
                             help='Batch size for model optimization.')
 
         return parser.parse_args()
+
+if __name__ == '__main__':
+    DeepSigTesting()

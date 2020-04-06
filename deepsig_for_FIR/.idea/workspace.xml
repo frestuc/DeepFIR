@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7bf9813a-6ec9-491d-a25d-cee78f671760" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/DataGeneratorFIR.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataGeneratorFIR.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataGeneratorFIR.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DeepSigTesting.py" beforeDir="false" afterPath="$PROJECT_DIR$/DeepSigTesting.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,6 +29,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -38,7 +39,7 @@
       <recent name="C:\Users\totix\Documents\GitHub\DeepRadioIDModulation\deepsig_for_FIR" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.cpu_deepsig_test_fir">
+  <component name="RunManager" selected="Python.cpu_deepsig_test_fir_dev">
     <configuration name="launch_me_cpu.sh" type="BashConfigurationType" factoryName="Bash" temporary="true">
       <module name="deepsig_for_FIR" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -113,7 +114,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="cpu_deepsig_test_fir" type="PythonConfigurationType" factoryName="Python">
+    <configuration name="cpu_deepsig_test_baseline" type="PythonConfigurationType" factoryName="Python">
       <module name="deepsig_for_FIR" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -125,8 +126,29 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DeepSig.py" />
-      <option name="PARAMETERS" value="--train_fir_perdev --h5_path C:\Users\totix\Desktop\darpa\bin_files\2018.01\GOLD_XYZ_OSC.0001_1024.hdf5 --data_path C:\Users\totix\Desktop\darpa\bin_files\2018.01\GOLD_XYZ_OSC.0001_1024.hdf5 --batch_size 32 --epochs 1 --max_steps 200 --fir_size 100 --load_indexes --num_ex_mod 106496 --num_classes 24 --save_path C:\Users\totix\Desktop\darpa\deepsig" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DeepSigTesting.py" />
+      <option name="PARAMETERS" value="--test_single_model --data_path C:\Users\totix\Desktop\darpa\bin_files\2018.01\GOLD_XYZ_OSC.0001_1024.hdf5 --model_name C:\Users\totix\Desktop\darpa\deepsig\modulation_model.hdf5 --models_path C:\Users\totix\Desktop\darpa\deepsig\per_dev --batch_size 32 --test_single_model --max_steps 0 --num_classes 24 --save_file_name baseline_results --save_path C:\Users\totix\Desktop\darpa\deepsig" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="cpu_deepsig_test_fir_dev" type="PythonConfigurationType" factoryName="Python">
+      <module name="deepsig_for_FIR" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\totix\AppData\Local\Programs\Python\Python37\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DeepSigTesting.py" />
+      <option name="PARAMETERS" value="--test_perdev_model --data_path C:\Users\totix\Desktop\darpa\bin_files\2018.01\GOLD_XYZ_OSC.0001_1024.hdf5 --model_name C:\Users\totix\Desktop\darpa\deepsig\modulation_model.hdf5 --models_path C:\Users\totix\Desktop\darpa\deepsig\per_dev --batch_size 32 --max_steps 0 --num_classes 24 --save_file_name per_dev_fir_results --save_path C:\Users\totix\Desktop\darpa\deepsig" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -167,7 +189,8 @@
       <item itemvalue="Bash.launch_me_cpu.sh" />
       <item itemvalue="Python.cpu_deepsig_load" />
       <item itemvalue="Python.cpu_deepsig_load_fir_perdev" />
-      <item itemvalue="Python.cpu_deepsig_test_fir" />
+      <item itemvalue="Python.cpu_deepsig_test_baseline" />
+      <item itemvalue="Python.cpu_deepsig_test_fir_dev" />
       <item itemvalue="Python.cpu_deepsig" />
       <item itemvalue="Python.test_garbage" />
       <item itemvalue="Shell Script.launch_me_cpu.sh" />
@@ -188,13 +211,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1585323849391</updated>
-    </task>
-    <task id="LOCAL-00018" summary="might work now">
-      <created>1585580010079</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1585580010079</updated>
     </task>
     <task id="LOCAL-00019" summary="might work now">
       <created>1585580784982</created>
@@ -532,11 +548,17 @@
       <option name="project" value="LOCAL" />
       <updated>1586185562883</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="First attempt at testing only the FIR data">
+      <created>1586201462410</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1586201462410</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="test commit" />
     <MESSAGE value="fixed bash script" />
     <MESSAGE value="might work now" />
     <MESSAGE value="Fixed typos" />
@@ -561,49 +583,54 @@
     <MESSAGE value="Indexes are indeed different, let's work on batch size" />
     <MESSAGE value="Looks like the FIR taps where computed weird. Need to save data for plotting and finally train FIR. Check it taps are legit" />
     <MESSAGE value="Including scripts to save accuracy and confusion matrix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Including scripts to save accuracy and confusion matrix" />
+    <MESSAGE value="First attempt at testing only the FIR data" />
+    <option name="LAST_COMMIT_MESSAGE" value="First attempt at testing only the FIR data" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="438" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586193901935">
+    <state x="1018" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586212437594">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state x="438" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2194.1194@0.0.2194.1194" timestamp="1586193901935" />
-    <state x="674" y="189" key="CommitChangelistDialog2" timestamp="1586185562206">
+    <state x="1018" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2194.1194@0.0.2194.1194" timestamp="1586212437594" />
+    <state x="802" y="350" key="#xdebugger.XInspectDialog" timestamp="1586209204003">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state x="674" y="189" key="CommitChangelistDialog2/0.0.2194.1194@0.0.2194.1194" timestamp="1586185562206" />
-    <state width="2173" height="399" key="GridCell.Tab.0.bottom" timestamp="1585950867758">
+    <state x="802" y="350" key="#xdebugger.XInspectDialog/0.0.2194.1194@0.0.2194.1194" timestamp="1586209204003" />
+    <state x="674" y="189" key="CommitChangelistDialog2" timestamp="1586212693572">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="399" key="GridCell.Tab.0.bottom/0.0.2194.1194@0.0.2194.1194" timestamp="1585950867758" />
-    <state width="2173" height="399" key="GridCell.Tab.0.center" timestamp="1585950867758">
+    <state x="674" y="189" key="CommitChangelistDialog2/0.0.2194.1194@0.0.2194.1194" timestamp="1586212693572" />
+    <state width="2173" height="399" key="GridCell.Tab.0.bottom" timestamp="1586212640809">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="399" key="GridCell.Tab.0.center/0.0.2194.1194@0.0.2194.1194" timestamp="1585950867758" />
-    <state width="2173" height="399" key="GridCell.Tab.0.left" timestamp="1585950867758">
+    <state width="2173" height="399" key="GridCell.Tab.0.bottom/0.0.2194.1194@0.0.2194.1194" timestamp="1586212640809" />
+    <state width="2173" height="399" key="GridCell.Tab.0.center" timestamp="1586212640808">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="399" key="GridCell.Tab.0.left/0.0.2194.1194@0.0.2194.1194" timestamp="1585950867758" />
-    <state width="2173" height="399" key="GridCell.Tab.0.right" timestamp="1585950867758">
+    <state width="2173" height="399" key="GridCell.Tab.0.center/0.0.2194.1194@0.0.2194.1194" timestamp="1586212640808" />
+    <state width="2173" height="399" key="GridCell.Tab.0.left" timestamp="1586212640808">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="399" key="GridCell.Tab.0.right/0.0.2194.1194@0.0.2194.1194" timestamp="1585950867758" />
-    <state width="2173" height="399" key="GridCell.Tab.1.bottom" timestamp="1585950867758">
+    <state width="2173" height="399" key="GridCell.Tab.0.left/0.0.2194.1194@0.0.2194.1194" timestamp="1586212640808" />
+    <state width="2173" height="399" key="GridCell.Tab.0.right" timestamp="1586212640809">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="399" key="GridCell.Tab.1.bottom/0.0.2194.1194@0.0.2194.1194" timestamp="1585950867758" />
-    <state width="2173" height="399" key="GridCell.Tab.1.center" timestamp="1585950867758">
+    <state width="2173" height="399" key="GridCell.Tab.0.right/0.0.2194.1194@0.0.2194.1194" timestamp="1586212640809" />
+    <state width="2173" height="399" key="GridCell.Tab.1.bottom" timestamp="1586212653830">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="399" key="GridCell.Tab.1.center/0.0.2194.1194@0.0.2194.1194" timestamp="1585950867758" />
-    <state width="2173" height="399" key="GridCell.Tab.1.left" timestamp="1585950867758">
+    <state width="2173" height="399" key="GridCell.Tab.1.bottom/0.0.2194.1194@0.0.2194.1194" timestamp="1586212653830" />
+    <state width="2173" height="399" key="GridCell.Tab.1.center" timestamp="1586212653829">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="399" key="GridCell.Tab.1.left/0.0.2194.1194@0.0.2194.1194" timestamp="1585950867758" />
-    <state width="2173" height="399" key="GridCell.Tab.1.right" timestamp="1585950867758">
+    <state width="2173" height="399" key="GridCell.Tab.1.center/0.0.2194.1194@0.0.2194.1194" timestamp="1586212653829" />
+    <state width="2173" height="399" key="GridCell.Tab.1.left" timestamp="1586212653829">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="399" key="GridCell.Tab.1.right/0.0.2194.1194@0.0.2194.1194" timestamp="1585950867758" />
+    <state width="2173" height="399" key="GridCell.Tab.1.left/0.0.2194.1194@0.0.2194.1194" timestamp="1586212653829" />
+    <state width="2173" height="399" key="GridCell.Tab.1.right" timestamp="1586212653829">
+      <screen x="0" y="0" width="2194" height="1194" />
+    </state>
+    <state width="2173" height="399" key="GridCell.Tab.1.right/0.0.2194.1194@0.0.2194.1194" timestamp="1586212653829" />
     <state x="690" y="330" key="Vcs.Push.Dialog.v2" timestamp="1586185567488">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
@@ -627,5 +654,10 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="self.test_generator" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
