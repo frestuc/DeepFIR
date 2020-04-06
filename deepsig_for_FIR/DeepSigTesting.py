@@ -12,6 +12,7 @@ from keras.models import Model
 from keras.optimizers import Adam
 
 from DataGenerator import DataGenerator
+from DataGeneratorFIR import DataGeneratorFIR
 
 class DeepSigTesting(object):
     '''Class to test model described in paper
@@ -42,7 +43,7 @@ class DeepSigTesting(object):
         else:
             print('You are not testing any model')
 
-    def load_single_model(self):
+    def load_model(self):
         '''Build model architecture.'''
         print('*************** Loading Model ***************')
         if os.path.exists(self.args.model_name):
@@ -72,7 +73,33 @@ class DeepSigTesting(object):
         else:
             print('I have no data to load, please give me data (e.g., indexes.pkl)')
 
-    def test_single_model(self):
+    def load_testing_data_for_FIR(self):
+        '''Load data from path into framework.'''
+
+        print('--------- Loading from File indexes.pkl ---------')
+
+        if os.path.exists(self.args.index_file):
+            # Getting back the objects:
+            with open('indexes.pkl', 'rb') as f:  # Python 3: open(..., 'rb') note that indexes
+                data_loaded = pkl.load(f)
+
+            # To Do: this should be transformed into a dictionary and you pull 'test_indexes only'. Kinda hardcoded to be fixed later
+            self.test_indexes = data_loaded[-1]
+
+            print('*********************  Generating testing data *********************')
+            self.test_generator = DataGeneratorFIR(indexes=self.test_indexes,
+                                                batch_size=self.args.batch_size,
+                                                data_path=self.args.data_path, is_2d=self.is_2d,
+                                                models_path = self.args.models_path,
+                                                model_name = self.args.fir_model_name,
+                                                taps_name = self.args.taps_name,
+                                                FIR_layer_name = self.args.FIR_Layer_name,
+                                                num_classes = self.num_classes)
+
+        else:
+            print('I have no data to load, please give me data (e.g., indexes.pkl)')
+
+    def test_model(self):
         optimizer = Adam(lr=0.0001)
         self.model.compile(loss='categorical_crossentropy',
                            optimizer=optimizer,
@@ -94,14 +121,13 @@ class DeepSigTesting(object):
     def run(self):
         '''Run different steps in model pipeline.'''
         if self.args.test_single_model:
-            self.load_single_model()
+            self.load_model()
             self.load_testing_data()
-            self.test_single_model()
+            self.test_model()
         elif self.args.test_perdev_model:
-            for d in range(self.num_classes):
-                self.load_model(d)
-                self.load_testing_data()
-                self.test(d)
+            self.load_model()
+            self.load_testing_data_for_FIR()
+            self.test_model()
         else:
             print('EXITING - Please specify model to be tested')
 
@@ -116,6 +142,18 @@ class DeepSigTesting(object):
 
         parser.add_argument('--model_name', type=str, default='./home/salvo/deepsig_res/modulation_model.hdf5',
                             help='Name of baseline model.')
+
+        parser.add_argument('--FIR_model_name', type=str, default='FIR_model',
+                            help='Name of the FIR model without the hdf5 extension, just the prefix used to generate them.')
+
+        parser.add_argument('--FIR_taps_name', type=str, default='phi',
+                            help='Name of the variable storing the taps.')
+
+        parser.add_argument('--FIR_layer_name', type=str, default='FIR_layer',
+                            help='Name of the FIR layer in Keras, this is usually FIR_layer when you create the model.')
+
+        parser.add_argument('--models_path', type=str, default='./home/salvo/deepsig_res/per_dev',
+                            help='Path where all FIR models are saved.')
 
         parser.add_argument('--index_file', type='str', default = 'indexes.pkl',
                             help='Name of index pickle file, usually we store a dictionary "indexes.pkl" with indexes in there. MUST contain a "test_indexes" variable')

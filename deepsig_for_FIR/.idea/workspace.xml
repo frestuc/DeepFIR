@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7bf9813a-6ec9-491d-a25d-cee78f671760" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/DeepSigTesting.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DataGeneratorFIR.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/savePerformance.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DeepSigTesting.py" beforeDir="false" afterPath="$PROJECT_DIR$/DeepSigTesting.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +30,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/DeepSig.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -38,7 +38,7 @@
       <recent name="C:\Users\totix\Documents\GitHub\DeepRadioIDModulation\deepsig_for_FIR" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.cpu_deepsig_load_fir_perdev">
+  <component name="RunManager" selected="Python.cpu_deepsig_test_fir">
     <configuration name="launch_me_cpu.sh" type="BashConfigurationType" factoryName="Bash" temporary="true">
       <module name="deepsig_for_FIR" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -113,6 +113,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="cpu_deepsig_test_fir" type="PythonConfigurationType" factoryName="Python">
+      <module name="deepsig_for_FIR" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\totix\AppData\Local\Programs\Python\Python37\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DeepSig.py" />
+      <option name="PARAMETERS" value="--train_fir_perdev --h5_path C:\Users\totix\Desktop\darpa\bin_files\2018.01\GOLD_XYZ_OSC.0001_1024.hdf5 --data_path C:\Users\totix\Desktop\darpa\bin_files\2018.01\GOLD_XYZ_OSC.0001_1024.hdf5 --batch_size 32 --epochs 1 --max_steps 200 --fir_size 100 --load_indexes --num_ex_mod 106496 --num_classes 24 --save_path C:\Users\totix\Desktop\darpa\deepsig" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="test_garbage" type="PythonConfigurationType" factoryName="Python">
       <module name="deepsig_for_FIR" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -146,6 +167,7 @@
       <item itemvalue="Bash.launch_me_cpu.sh" />
       <item itemvalue="Python.cpu_deepsig_load" />
       <item itemvalue="Python.cpu_deepsig_load_fir_perdev" />
+      <item itemvalue="Python.cpu_deepsig_test_fir" />
       <item itemvalue="Python.cpu_deepsig" />
       <item itemvalue="Python.test_garbage" />
       <item itemvalue="Shell Script.launch_me_cpu.sh" />
@@ -166,13 +188,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1585323849391</updated>
-    </task>
-    <task id="LOCAL-00017" summary="might work now">
-      <created>1585579582031</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1585579582031</updated>
     </task>
     <task id="LOCAL-00018" summary="might work now">
       <created>1585580010079</created>
@@ -510,11 +525,17 @@
       <option name="project" value="LOCAL" />
       <updated>1585950854987</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="Including scripts to save accuracy and confusion matrix">
+      <created>1586185562882</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1586185562883</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed frozen model import. Ready to test on DGX" />
     <MESSAGE value="test commit" />
     <MESSAGE value="fixed bash script" />
     <MESSAGE value="might work now" />
@@ -539,17 +560,18 @@
     <MESSAGE value="Let's see if we can avoid overfitting" />
     <MESSAGE value="Indexes are indeed different, let's work on batch size" />
     <MESSAGE value="Looks like the FIR taps where computed weird. Need to save data for plotting and finally train FIR. Check it taps are legit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Looks like the FIR taps where computed weird. Need to save data for plotting and finally train FIR. Check it taps are legit" />
+    <MESSAGE value="Including scripts to save accuracy and confusion matrix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Including scripts to save accuracy and confusion matrix" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="438" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585948200875">
+    <state x="438" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586193901935">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state x="438" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2194.1194@0.0.2194.1194" timestamp="1585948200875" />
-    <state x="674" y="189" key="CommitChangelistDialog2" timestamp="1585950854397">
+    <state x="438" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2194.1194@0.0.2194.1194" timestamp="1586193901935" />
+    <state x="674" y="189" key="CommitChangelistDialog2" timestamp="1586185562206">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state x="674" y="189" key="CommitChangelistDialog2/0.0.2194.1194@0.0.2194.1194" timestamp="1585950854397" />
+    <state x="674" y="189" key="CommitChangelistDialog2/0.0.2194.1194@0.0.2194.1194" timestamp="1586185562206" />
     <state width="2173" height="399" key="GridCell.Tab.0.bottom" timestamp="1585950867758">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
@@ -582,10 +604,10 @@
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
     <state width="2173" height="399" key="GridCell.Tab.1.right/0.0.2194.1194@0.0.2194.1194" timestamp="1585950867758" />
-    <state x="690" y="330" key="Vcs.Push.Dialog.v2" timestamp="1585950862097">
+    <state x="690" y="330" key="Vcs.Push.Dialog.v2" timestamp="1586185567488">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state x="690" y="330" key="Vcs.Push.Dialog.v2/0.0.2194.1194@0.0.2194.1194" timestamp="1585950862097" />
+    <state x="690" y="330" key="Vcs.Push.Dialog.v2/0.0.2194.1194@0.0.2194.1194" timestamp="1586185567488" />
     <state x="906" y="514" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585936602254">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
@@ -594,5 +616,16 @@
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
     <state x="786" y="389" key="git4idea.merge.GitPullDialog/0.0.2194.1194@0.0.2194.1194" timestamp="1586179738875" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/DataGeneratorFIR.py</url>
+          <line>67</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
