@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7bf9813a-6ec9-491d-a25d-cee78f671760" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/savePerformance.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DeepSigTesting.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DeepSig.py" beforeDir="false" afterPath="$PROJECT_DIR$/DeepSig.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FIRInitializer.py" beforeDir="false" afterPath="$PROJECT_DIR$/FIRInitializer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.h5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.hdf5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/savePerformance.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,6 +143,7 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Bash.launch_me_cpu.sh" />
       <item itemvalue="Python.cpu_deepsig_load" />
       <item itemvalue="Python.cpu_deepsig_load_fir_perdev" />
       <item itemvalue="Python.cpu_deepsig" />
@@ -168,13 +166,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1585323849391</updated>
-    </task>
-    <task id="LOCAL-00016" summary="might work now">
-      <created>1585579262648</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1585579262648</updated>
     </task>
     <task id="LOCAL-00017" summary="might work now">
       <created>1585579582031</created>
@@ -512,11 +503,17 @@
       <option name="project" value="LOCAL" />
       <updated>1585858029435</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="Looks like the FIR taps where computed weird. Need to save data for plotting and finally train FIR. Check it taps are legit">
+      <created>1585950854987</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1585950854987</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="WOrking on loading weights over a model with FIR layers. NEed to double check weiaghts are actually the same" />
     <MESSAGE value="Fixed frozen model import. Ready to test on DGX" />
     <MESSAGE value="test commit" />
     <MESSAGE value="fixed bash script" />
@@ -541,48 +538,61 @@
     <MESSAGE value="Training of each FIR works. Now time to avoid overfitting" />
     <MESSAGE value="Let's see if we can avoid overfitting" />
     <MESSAGE value="Indexes are indeed different, let's work on batch size" />
-    <option name="LAST_COMMIT_MESSAGE" value="Indexes are indeed different, let's work on batch size" />
+    <MESSAGE value="Looks like the FIR taps where computed weird. Need to save data for plotting and finally train FIR. Check it taps are legit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Looks like the FIR taps where computed weird. Need to save data for plotting and finally train FIR. Check it taps are legit" />
   </component>
   <component name="WindowStateProjectService">
     <state x="438" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585948200875">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
     <state x="438" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2194.1194@0.0.2194.1194" timestamp="1585948200875" />
-    <state width="2173" height="399" key="GridCell.Tab.0.bottom" timestamp="1585948962184">
+    <state x="674" y="189" key="CommitChangelistDialog2" timestamp="1585950854397">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="399" key="GridCell.Tab.0.bottom/0.0.2194.1194@0.0.2194.1194" timestamp="1585948962184" />
-    <state width="2173" height="399" key="GridCell.Tab.0.center" timestamp="1585948962184">
+    <state x="674" y="189" key="CommitChangelistDialog2/0.0.2194.1194@0.0.2194.1194" timestamp="1585950854397" />
+    <state width="2173" height="399" key="GridCell.Tab.0.bottom" timestamp="1585950867758">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="399" key="GridCell.Tab.0.center/0.0.2194.1194@0.0.2194.1194" timestamp="1585948962184" />
-    <state width="2173" height="399" key="GridCell.Tab.0.left" timestamp="1585948962183">
+    <state width="2173" height="399" key="GridCell.Tab.0.bottom/0.0.2194.1194@0.0.2194.1194" timestamp="1585950867758" />
+    <state width="2173" height="399" key="GridCell.Tab.0.center" timestamp="1585950867758">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="399" key="GridCell.Tab.0.left/0.0.2194.1194@0.0.2194.1194" timestamp="1585948962183" />
-    <state width="2173" height="399" key="GridCell.Tab.0.right" timestamp="1585948962184">
+    <state width="2173" height="399" key="GridCell.Tab.0.center/0.0.2194.1194@0.0.2194.1194" timestamp="1585950867758" />
+    <state width="2173" height="399" key="GridCell.Tab.0.left" timestamp="1585950867758">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="399" key="GridCell.Tab.0.right/0.0.2194.1194@0.0.2194.1194" timestamp="1585948962184" />
-    <state width="2173" height="399" key="GridCell.Tab.1.bottom" timestamp="1585948994432">
+    <state width="2173" height="399" key="GridCell.Tab.0.left/0.0.2194.1194@0.0.2194.1194" timestamp="1585950867758" />
+    <state width="2173" height="399" key="GridCell.Tab.0.right" timestamp="1585950867758">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="399" key="GridCell.Tab.1.bottom/0.0.2194.1194@0.0.2194.1194" timestamp="1585948994432" />
-    <state width="2173" height="399" key="GridCell.Tab.1.center" timestamp="1585948994432">
+    <state width="2173" height="399" key="GridCell.Tab.0.right/0.0.2194.1194@0.0.2194.1194" timestamp="1585950867758" />
+    <state width="2173" height="399" key="GridCell.Tab.1.bottom" timestamp="1585950867758">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="399" key="GridCell.Tab.1.center/0.0.2194.1194@0.0.2194.1194" timestamp="1585948994432" />
-    <state width="2173" height="399" key="GridCell.Tab.1.left" timestamp="1585948994432">
+    <state width="2173" height="399" key="GridCell.Tab.1.bottom/0.0.2194.1194@0.0.2194.1194" timestamp="1585950867758" />
+    <state width="2173" height="399" key="GridCell.Tab.1.center" timestamp="1585950867758">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="399" key="GridCell.Tab.1.left/0.0.2194.1194@0.0.2194.1194" timestamp="1585948994432" />
-    <state width="2173" height="399" key="GridCell.Tab.1.right" timestamp="1585948994432">
+    <state width="2173" height="399" key="GridCell.Tab.1.center/0.0.2194.1194@0.0.2194.1194" timestamp="1585950867758" />
+    <state width="2173" height="399" key="GridCell.Tab.1.left" timestamp="1585950867758">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="399" key="GridCell.Tab.1.right/0.0.2194.1194@0.0.2194.1194" timestamp="1585948994432" />
+    <state width="2173" height="399" key="GridCell.Tab.1.left/0.0.2194.1194@0.0.2194.1194" timestamp="1585950867758" />
+    <state width="2173" height="399" key="GridCell.Tab.1.right" timestamp="1585950867758">
+      <screen x="0" y="0" width="2194" height="1194" />
+    </state>
+    <state width="2173" height="399" key="GridCell.Tab.1.right/0.0.2194.1194@0.0.2194.1194" timestamp="1585950867758" />
+    <state x="690" y="330" key="Vcs.Push.Dialog.v2" timestamp="1585950862097">
+      <screen x="0" y="0" width="2194" height="1194" />
+    </state>
+    <state x="690" y="330" key="Vcs.Push.Dialog.v2/0.0.2194.1194@0.0.2194.1194" timestamp="1585950862097" />
     <state x="906" y="514" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585936602254">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
     <state x="906" y="514" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2194.1194@0.0.2194.1194" timestamp="1585936602254" />
+    <state x="786" y="389" key="git4idea.merge.GitPullDialog" timestamp="1586179738875">
+      <screen x="0" y="0" width="2194" height="1194" />
+    </state>
+    <state x="786" y="389" key="git4idea.merge.GitPullDialog/0.0.2194.1194@0.0.2194.1194" timestamp="1586179738875" />
   </component>
 </project>
