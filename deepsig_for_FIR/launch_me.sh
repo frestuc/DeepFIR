@@ -22,5 +22,6 @@ python2 ./DeepSig.py \
         --num_classes 24 \
         --id_gpu $gpu \
         --patience 10 \
+	--save_path /home/salvo/deepsig_res
 #	> /home/salvo/deepsig_res/out.log \
 #	2> /home/salvo/deepsig_res/err.log
