@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7bf9813a-6ec9-491d-a25d-cee78f671760" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/launch_testing.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataGeneratorFIR.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataGeneratorFIR.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,13 +210,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1585323849391</updated>
-    </task>
-    <task id="LOCAL-00022" summary="Fixed location of hdf5 files">
-      <created>1585586593563</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1585586593563</updated>
     </task>
     <task id="LOCAL-00023" summary="Fixed location of hdf5 files">
       <created>1585587172939</created>
@@ -554,11 +547,17 @@
       <option name="project" value="LOCAL" />
       <updated>1586226720151</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="Fixed problem with size">
+      <created>1586267492217</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1586267492217</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed location of hdf5 files" />
     <MESSAGE value="debugging starts" />
     <MESSAGE value="debugging continues" />
     <MESSAGE value="debugging continues...trying //batch_size trick" />
@@ -583,21 +582,22 @@
     <MESSAGE value="There is an error in self.fir_taps dimensions" />
     <MESSAGE value="FIx where SALVO is" />
     <MESSAGE value="Need to stash imag and real and reconstruct the X signal. Almost done" />
-    <option name="LAST_COMMIT_MESSAGE" value="Need to stash imag and real and reconstruct the X signal. Almost done" />
+    <MESSAGE value="Fixed problem with size" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed problem with size" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1018" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586212437594">
+    <state x="1018" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586267584285">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state x="1018" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2194.1194@0.0.2194.1194" timestamp="1586212437594" />
+    <state x="1018" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2194.1194@0.0.2194.1194" timestamp="1586267584285" />
     <state x="802" y="350" key="#xdebugger.XInspectDialog" timestamp="1586209204003">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
     <state x="802" y="350" key="#xdebugger.XInspectDialog/0.0.2194.1194@0.0.2194.1194" timestamp="1586209204003" />
-    <state x="674" y="189" key="CommitChangelistDialog2" timestamp="1586226719647">
+    <state x="674" y="189" key="CommitChangelistDialog2" timestamp="1586267491642">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state x="674" y="189" key="CommitChangelistDialog2/0.0.2194.1194@0.0.2194.1194" timestamp="1586226719647" />
+    <state x="674" y="189" key="CommitChangelistDialog2/0.0.2194.1194@0.0.2194.1194" timestamp="1586267491642" />
     <state width="2173" height="545" key="GridCell.Tab.0.bottom" timestamp="1586267467678">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
@@ -630,10 +630,10 @@
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
     <state width="2173" height="399" key="GridCell.Tab.1.right/0.0.2194.1194@0.0.2194.1194" timestamp="1586267172325" />
-    <state x="690" y="330" key="Vcs.Push.Dialog.v2" timestamp="1586226723704">
+    <state x="690" y="330" key="Vcs.Push.Dialog.v2" timestamp="1586267495198">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state x="690" y="330" key="Vcs.Push.Dialog.v2/0.0.2194.1194@0.0.2194.1194" timestamp="1586226723704" />
+    <state x="690" y="330" key="Vcs.Push.Dialog.v2/0.0.2194.1194@0.0.2194.1194" timestamp="1586267495198" />
     <state x="906" y="514" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585936602254">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
