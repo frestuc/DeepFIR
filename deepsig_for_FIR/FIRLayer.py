@@ -32,12 +32,8 @@ class FIRLayer(Layer):
     def build(self, input_shape):
         '''Define the layer weights.'''
         self.actual_input_shape = input_shape
-        trivial_dimension = np.argwhere(np.array(input_shape) == 1)[0]
-        if len(trivial_dimension):  # this is only if we need to remove dummy dimensions
-            print('Inside build() -- Dropping one input dimension')
-            self.actual_input_shape = list(input_shape)
-            self.actual_input_shape.pop(int(trivial_dimension))
-            self.actual_input_shape = tuple(self.actual_input_shape)
+
+
 
         self.phi = self.add_weight(name='phi',                        # here was input_shape[2]
                                    shape=(self.filter_dim, self.actual_input_shape[2], self.channels),  # (5, 2, 1)

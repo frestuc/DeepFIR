@@ -10,6 +10,7 @@ import threading
 import time
 
 from keras.utils.io_utils import HDF5Matrix
+from keras import backend as K
 import Utils
 
 
@@ -28,7 +29,7 @@ class DataGeneratorFIR(keras.utils.Sequence):
         self.is_2d = is_2d
 
         # load FIR taps, this is supposed to be saved as a FIR layer with name FIR_layer_name and taps are named as taps_name:0
-        for d in range(num_classes):
+        for d in range(4): # range(num_classes):
             f = h5py.File(os.path.join(models_path, model_name + '_' + str(d) + '.hdf5'), 'r')
             if d == 0:
                 shape_var = f['model_weights'][FIR_layer_name][FIR_layer_name][taps_name+':0'].shape
@@ -39,12 +40,14 @@ class DataGeneratorFIR(keras.utils.Sequence):
                 self.fir_taps = np.zeros(np.append(self.shape_FIR,num_classes))
 
             # SALVO il secondo FIR layer name cambia ad ogni modello, cercare un modo di prendere solo quello tramite keys.
+            var_temp = f['model_weights'][FIR_layer_name]
+            key = [key for key in var_temp.keys()][0]
             if trivial_dimension == 0:
-                self.fir_taps[:, :, d] = f['model_weights'][FIR_layer_name][FIR_layer_name][taps_name + ':0'][0, :, :]
+                self.fir_taps[:, :, d] = var_temp[key][taps_name + ':0'][0, :, :]
             elif trivial_dimension == 1:
-                self.fir_taps[:, :, d] = f['model_weights'][FIR_layer_name][FIR_layer_name][taps_name + ':0'][:, 0, :]
+                self.fir_taps[:, :, d] = var_temp[key][taps_name + ':0'][:, 0, :]
             else:
-                self.fir_taps[:, :, d] = f['model_weights'][FIR_layer_name][FIR_layer_name][taps_name + ':0'][:, :, 0]
+                self.fir_taps[:, :, d] = var_temp[key][taps_name + ':0'][:, :, 0]
 
 
         self.X = HDF5Matrix(self.data_path, 'X')
@@ -71,6 +74,22 @@ class DataGeneratorFIR(keras.utils.Sequence):
             y[i] = self.Y[idx]
 
             # To Do, here we need to edit the input via FIR convolution
+            temp_X = self.X[idx]
+            d = np.argmax(y[i])
+            phi = np.array([[1,0],[0,0],[0,0]]) # self.fir_taps[:,:,d]
+
+            X_real = np.transpose(temp_X[:,0])
+            X_img = np.transpose(temp_X[:, 1])
+
+            phi_real = np.transpose(phi[:, 0])
+            phi_img = np.transpose(phi[:, 1])
+
+            X_new_real = np.transpose(np.convolve(X_real,phi_real,'full') - np.convolve(X_img,phi_img,'full'))
+            X_new_img = np.transpose(np.convolve(X_real, phi_img, 'full') + np.convolve(X_img, phi_real, 'full'))
+            X_new_real = X_new_real[0:X_real.shape[0]]
+            X_new_img = X_new_img[0:X_real.shape[0]]
+
+            # SALVO HERE
             X[i,] = self.X[idx]
 
         if self.is_2d: # this is done just to use 2D models and add a new dimension
