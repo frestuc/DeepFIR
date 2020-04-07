@@ -29,7 +29,7 @@ class DataGeneratorFIR(keras.utils.Sequence):
         self.is_2d = is_2d
 
         # load FIR taps, this is supposed to be saved as a FIR layer with name FIR_layer_name and taps are named as taps_name:0
-        for d in range(4): # range(num_classes):
+        for d in range(num_classes):
             f = h5py.File(os.path.join(models_path, model_name + '_' + str(d) + '.hdf5'), 'r')
             if d == 0:
                 shape_var = f['model_weights'][FIR_layer_name][FIR_layer_name][taps_name+':0'].shape
