@@ -4,7 +4,6 @@
     <list default="true" id="7bf9813a-6ec9-491d-a25d-cee78f671760" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataGeneratorFIR.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataGeneratorFIR.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DeepSigTesting.py" beforeDir="false" afterPath="$PROJECT_DIR$/DeepSigTesting.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,13 +210,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1585323849391</updated>
-    </task>
-    <task id="LOCAL-00019" summary="might work now">
-      <created>1585580784982</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1585580784982</updated>
     </task>
     <task id="LOCAL-00020" summary="Fixed typos">
       <created>1585581024185</created>
@@ -555,11 +547,17 @@
       <option name="project" value="LOCAL" />
       <updated>1586201462410</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="There is an error in self.fir_taps dimensions">
+      <created>1586212711601</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1586212711601</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed bash script" />
     <MESSAGE value="might work now" />
     <MESSAGE value="Fixed typos" />
     <MESSAGE value="Fixed location of hdf5 files" />
@@ -584,7 +582,8 @@
     <MESSAGE value="Looks like the FIR taps where computed weird. Need to save data for plotting and finally train FIR. Check it taps are legit" />
     <MESSAGE value="Including scripts to save accuracy and confusion matrix" />
     <MESSAGE value="First attempt at testing only the FIR data" />
-    <option name="LAST_COMMIT_MESSAGE" value="First attempt at testing only the FIR data" />
+    <MESSAGE value="There is an error in self.fir_taps dimensions" />
+    <option name="LAST_COMMIT_MESSAGE" value="There is an error in self.fir_taps dimensions" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1018" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586212437594">
@@ -595,46 +594,46 @@
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
     <state x="802" y="350" key="#xdebugger.XInspectDialog/0.0.2194.1194@0.0.2194.1194" timestamp="1586209204003" />
-    <state x="674" y="189" key="CommitChangelistDialog2" timestamp="1586212693572">
+    <state x="674" y="189" key="CommitChangelistDialog2" timestamp="1586212711005">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state x="674" y="189" key="CommitChangelistDialog2/0.0.2194.1194@0.0.2194.1194" timestamp="1586212693572" />
-    <state width="2173" height="399" key="GridCell.Tab.0.bottom" timestamp="1586212640809">
+    <state x="674" y="189" key="CommitChangelistDialog2/0.0.2194.1194@0.0.2194.1194" timestamp="1586212711005" />
+    <state width="2173" height="399" key="GridCell.Tab.0.bottom" timestamp="1586219597790">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="399" key="GridCell.Tab.0.bottom/0.0.2194.1194@0.0.2194.1194" timestamp="1586212640809" />
-    <state width="2173" height="399" key="GridCell.Tab.0.center" timestamp="1586212640808">
+    <state width="2173" height="399" key="GridCell.Tab.0.bottom/0.0.2194.1194@0.0.2194.1194" timestamp="1586219597790" />
+    <state width="2173" height="399" key="GridCell.Tab.0.center" timestamp="1586219597790">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="399" key="GridCell.Tab.0.center/0.0.2194.1194@0.0.2194.1194" timestamp="1586212640808" />
-    <state width="2173" height="399" key="GridCell.Tab.0.left" timestamp="1586212640808">
+    <state width="2173" height="399" key="GridCell.Tab.0.center/0.0.2194.1194@0.0.2194.1194" timestamp="1586219597790" />
+    <state width="2173" height="399" key="GridCell.Tab.0.left" timestamp="1586219597790">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="399" key="GridCell.Tab.0.left/0.0.2194.1194@0.0.2194.1194" timestamp="1586212640808" />
-    <state width="2173" height="399" key="GridCell.Tab.0.right" timestamp="1586212640809">
+    <state width="2173" height="399" key="GridCell.Tab.0.left/0.0.2194.1194@0.0.2194.1194" timestamp="1586219597790" />
+    <state width="2173" height="399" key="GridCell.Tab.0.right" timestamp="1586219597790">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="399" key="GridCell.Tab.0.right/0.0.2194.1194@0.0.2194.1194" timestamp="1586212640809" />
-    <state width="2173" height="399" key="GridCell.Tab.1.bottom" timestamp="1586212653830">
+    <state width="2173" height="399" key="GridCell.Tab.0.right/0.0.2194.1194@0.0.2194.1194" timestamp="1586219597790" />
+    <state width="2173" height="399" key="GridCell.Tab.1.bottom" timestamp="1586219597790">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="399" key="GridCell.Tab.1.bottom/0.0.2194.1194@0.0.2194.1194" timestamp="1586212653830" />
-    <state width="2173" height="399" key="GridCell.Tab.1.center" timestamp="1586212653829">
+    <state width="2173" height="399" key="GridCell.Tab.1.bottom/0.0.2194.1194@0.0.2194.1194" timestamp="1586219597790" />
+    <state width="2173" height="399" key="GridCell.Tab.1.center" timestamp="1586219597790">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="399" key="GridCell.Tab.1.center/0.0.2194.1194@0.0.2194.1194" timestamp="1586212653829" />
-    <state width="2173" height="399" key="GridCell.Tab.1.left" timestamp="1586212653829">
+    <state width="2173" height="399" key="GridCell.Tab.1.center/0.0.2194.1194@0.0.2194.1194" timestamp="1586219597790" />
+    <state width="2173" height="399" key="GridCell.Tab.1.left" timestamp="1586219597790">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="399" key="GridCell.Tab.1.left/0.0.2194.1194@0.0.2194.1194" timestamp="1586212653829" />
-    <state width="2173" height="399" key="GridCell.Tab.1.right" timestamp="1586212653829">
+    <state width="2173" height="399" key="GridCell.Tab.1.left/0.0.2194.1194@0.0.2194.1194" timestamp="1586219597790" />
+    <state width="2173" height="399" key="GridCell.Tab.1.right" timestamp="1586219597790">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="399" key="GridCell.Tab.1.right/0.0.2194.1194@0.0.2194.1194" timestamp="1586212653829" />
-    <state x="690" y="330" key="Vcs.Push.Dialog.v2" timestamp="1586185567488">
+    <state width="2173" height="399" key="GridCell.Tab.1.right/0.0.2194.1194@0.0.2194.1194" timestamp="1586219597790" />
+    <state x="690" y="330" key="Vcs.Push.Dialog.v2" timestamp="1586212713846">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state x="690" y="330" key="Vcs.Push.Dialog.v2/0.0.2194.1194@0.0.2194.1194" timestamp="1586185567488" />
+    <state x="690" y="330" key="Vcs.Push.Dialog.v2/0.0.2194.1194@0.0.2194.1194" timestamp="1586212713846" />
     <state x="906" y="514" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585936602254">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
@@ -649,8 +648,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/DataGeneratorFIR.py</url>
-          <line>67</line>
+          <line>73</line>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/DataGeneratorFIR.py</url>
+          <line>49</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

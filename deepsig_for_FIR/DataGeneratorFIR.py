@@ -36,10 +36,16 @@ class DataGeneratorFIR(keras.utils.Sequence):
                 if len(trivial_dimension):  # this is only if we need to remove dummy dimensions
                     print('Dropping one input dimension')
                     self.shape_FIR = np.delete(shape_var,trivial_dimension)
-                self.fir_taps = np.zeros(self.shape_FIR)
+                self.fir_taps = np.zeros(np.append(self.shape_FIR,num_classes))
 
-            # SALVO start reading the taps
-            self.fir_taps[:,:,d] = f['model_weights'][FIR_layer_name][FIR_layer_name][taps_name+':0'][:]
+            # SALVO il secondo FIR layer name cambia ad ogni modello, cercare un modo di prendere solo quello tramite keys.
+            if trivial_dimension == 0:
+                self.fir_taps[:, :, d] = f['model_weights'][FIR_layer_name][FIR_layer_name][taps_name + ':0'][0, :, :]
+            elif trivial_dimension == 1:
+                self.fir_taps[:, :, d] = f['model_weights'][FIR_layer_name][FIR_layer_name][taps_name + ':0'][:, 0, :]
+            else:
+                self.fir_taps[:, :, d] = f['model_weights'][FIR_layer_name][FIR_layer_name][taps_name + ':0'][:, :, 0]
+
 
         self.X = HDF5Matrix(self.data_path, 'X')
         self.Y = HDF5Matrix(self.data_path, 'Y')
