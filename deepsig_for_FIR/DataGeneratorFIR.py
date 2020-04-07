@@ -76,7 +76,7 @@ class DataGeneratorFIR(keras.utils.Sequence):
             # To Do, here we need to edit the input via FIR convolution
             temp_X = self.X[idx]
             d = np.argmax(y[i])
-            phi = np.array([[1,0],[0,0],[0,0]]) # self.fir_taps[:,:,d]
+            phi = self.fir_taps[:,:,d]
 
             X_real = np.transpose(temp_X[:,0])
             X_img = np.transpose(temp_X[:, 1])
@@ -90,7 +90,7 @@ class DataGeneratorFIR(keras.utils.Sequence):
             X_new_img = X_new_img[0:X_real.shape[0]]
 
             # SALVO HERE
-            X[i,] = self.X[idx]
+            X[i,] = np.stack((X_new_real, X_new_img), axis=-1)
 
         if self.is_2d: # this is done just to use 2D models and add a new dimension
             X = np.expand_dims(X, 1)
