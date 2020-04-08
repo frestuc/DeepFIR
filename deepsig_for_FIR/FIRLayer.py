@@ -33,10 +33,10 @@ class FIRLayer(Layer):
         '''Define the layer weights.'''
         self.actual_input_shape = input_shape
 
+        print(self.actual_input_shape)
 
-
-        self.phi = self.add_weight(name='phi',                        # here was input_shape[2]
-                                   shape=(self.filter_dim, self.actual_input_shape[2], self.channels),  # (5, 2, 1)
+        self.phi = self.add_weight(name='phi',                        # here was input_shape[2], To do: if we want to have filters taps with more dimensions, this is where we should get rid of the [-1]
+                                   shape=(self.filter_dim, self.actual_input_shape[-1], self.channels),  # (5, 2, 1)
                                    initializer=FIRInitializer(),
                                    regularizer=self.kernel_regularizer,
                                    trainable=True)

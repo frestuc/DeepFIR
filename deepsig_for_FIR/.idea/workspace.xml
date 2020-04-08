@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7bf9813a-6ec9-491d-a25d-cee78f671760" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DeepSig.py" beforeDir="false" afterPath="$PROJECT_DIR$/DeepSig.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FIRLayer.py" beforeDir="false" afterPath="$PROJECT_DIR$/FIRLayer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +39,7 @@
       <recent name="C:\Users\totix\Documents\GitHub\DeepRadioIDModulation\deepsig_for_FIR" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.cpu_deepsig_test_fir_dev">
+  <component name="RunManager" selected="Python.cpu_deepsig_load_fir_perdev">
     <configuration name="launch_me_cpu.sh" type="BashConfigurationType" factoryName="Bash" temporary="true">
       <module name="deepsig_for_FIR" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -211,13 +211,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1585323849391</updated>
-    </task>
-    <task id="LOCAL-00025" summary="Fixed location of hdf5 files">
-      <created>1585591373557</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1585591373557</updated>
     </task>
     <task id="LOCAL-00026" summary="Fixed location of hdf5 files">
       <created>1585591864919</created>
@@ -555,7 +548,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586273291161</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="range(4) fixed">
+      <created>1586314078282</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1586314078282</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -587,62 +587,62 @@
     <option name="LAST_COMMIT_MESSAGE" value="range(4) fixed" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1018" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586267584285">
+    <state x="1018" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586314337767">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state x="1018" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2194.1194@0.0.2194.1194" timestamp="1586267584285" />
+    <state x="1018" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2194.1194@0.0.2194.1194" timestamp="1586314337767" />
     <state x="802" y="350" key="#xdebugger.XInspectDialog" timestamp="1586209204003">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
     <state x="802" y="350" key="#xdebugger.XInspectDialog/0.0.2194.1194@0.0.2194.1194" timestamp="1586209204003" />
-    <state x="674" y="189" key="CommitChangelistDialog2" timestamp="1586273289481">
+    <state x="674" y="189" key="CommitChangelistDialog2" timestamp="1586314077681">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state x="674" y="189" key="CommitChangelistDialog2/0.0.2194.1194@0.0.2194.1194" timestamp="1586273289481" />
-    <state width="2173" height="545" key="GridCell.Tab.0.bottom" timestamp="1586279987920">
+    <state x="674" y="189" key="CommitChangelistDialog2/0.0.2194.1194@0.0.2194.1194" timestamp="1586314077681" />
+    <state width="2173" height="399" key="GridCell.Tab.0.bottom" timestamp="1586349842968">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="545" key="GridCell.Tab.0.bottom/0.0.2194.1194@0.0.2194.1194" timestamp="1586279987920" />
-    <state width="2173" height="545" key="GridCell.Tab.0.center" timestamp="1586279987920">
+    <state width="2173" height="399" key="GridCell.Tab.0.bottom/0.0.2194.1194@0.0.2194.1194" timestamp="1586349842968" />
+    <state width="2173" height="399" key="GridCell.Tab.0.center" timestamp="1586349842968">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="545" key="GridCell.Tab.0.center/0.0.2194.1194@0.0.2194.1194" timestamp="1586279987920" />
-    <state width="2173" height="545" key="GridCell.Tab.0.left" timestamp="1586279987920">
+    <state width="2173" height="399" key="GridCell.Tab.0.center/0.0.2194.1194@0.0.2194.1194" timestamp="1586349842968" />
+    <state width="2173" height="399" key="GridCell.Tab.0.left" timestamp="1586349842968">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="545" key="GridCell.Tab.0.left/0.0.2194.1194@0.0.2194.1194" timestamp="1586279987920" />
-    <state width="2173" height="545" key="GridCell.Tab.0.right" timestamp="1586279987920">
+    <state width="2173" height="399" key="GridCell.Tab.0.left/0.0.2194.1194@0.0.2194.1194" timestamp="1586349842968" />
+    <state width="2173" height="399" key="GridCell.Tab.0.right" timestamp="1586349842968">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="545" key="GridCell.Tab.0.right/0.0.2194.1194@0.0.2194.1194" timestamp="1586279987920" />
-    <state width="2173" height="399" key="GridCell.Tab.1.bottom" timestamp="1586279987917">
+    <state width="2173" height="399" key="GridCell.Tab.0.right/0.0.2194.1194@0.0.2194.1194" timestamp="1586349842968" />
+    <state width="2173" height="399" key="GridCell.Tab.1.bottom" timestamp="1586349842968">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="399" key="GridCell.Tab.1.bottom/0.0.2194.1194@0.0.2194.1194" timestamp="1586279987917" />
-    <state width="2173" height="399" key="GridCell.Tab.1.center" timestamp="1586279987915">
+    <state width="2173" height="399" key="GridCell.Tab.1.bottom/0.0.2194.1194@0.0.2194.1194" timestamp="1586349842968" />
+    <state width="2173" height="399" key="GridCell.Tab.1.center" timestamp="1586349842968">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="399" key="GridCell.Tab.1.center/0.0.2194.1194@0.0.2194.1194" timestamp="1586279987915" />
-    <state width="2173" height="399" key="GridCell.Tab.1.left" timestamp="1586279987913">
+    <state width="2173" height="399" key="GridCell.Tab.1.center/0.0.2194.1194@0.0.2194.1194" timestamp="1586349842968" />
+    <state width="2173" height="399" key="GridCell.Tab.1.left" timestamp="1586349842968">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="399" key="GridCell.Tab.1.left/0.0.2194.1194@0.0.2194.1194" timestamp="1586279987913" />
-    <state width="2173" height="399" key="GridCell.Tab.1.right" timestamp="1586279987916">
+    <state width="2173" height="399" key="GridCell.Tab.1.left/0.0.2194.1194@0.0.2194.1194" timestamp="1586349842968" />
+    <state width="2173" height="399" key="GridCell.Tab.1.right" timestamp="1586349842968">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="399" key="GridCell.Tab.1.right/0.0.2194.1194@0.0.2194.1194" timestamp="1586279987916" />
-    <state x="690" y="330" key="Vcs.Push.Dialog.v2" timestamp="1586273293727">
+    <state width="2173" height="399" key="GridCell.Tab.1.right/0.0.2194.1194@0.0.2194.1194" timestamp="1586349842968" />
+    <state x="690" y="330" key="Vcs.Push.Dialog.v2" timestamp="1586314083961">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state x="690" y="330" key="Vcs.Push.Dialog.v2/0.0.2194.1194@0.0.2194.1194" timestamp="1586273293727" />
+    <state x="690" y="330" key="Vcs.Push.Dialog.v2/0.0.2194.1194@0.0.2194.1194" timestamp="1586314083961" />
     <state x="906" y="514" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585936602254">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
     <state x="906" y="514" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2194.1194@0.0.2194.1194" timestamp="1585936602254" />
-    <state x="786" y="389" key="git4idea.merge.GitPullDialog" timestamp="1586279938720">
+    <state x="786" y="389" key="git4idea.merge.GitPullDialog" timestamp="1586349626128">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state x="786" y="389" key="git4idea.merge.GitPullDialog/0.0.2194.1194@0.0.2194.1194" timestamp="1586279938720" />
+    <state x="786" y="389" key="git4idea.merge.GitPullDialog/0.0.2194.1194@0.0.2194.1194" timestamp="1586349626128" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
