@@ -84,7 +84,7 @@ class DeepSigTesting(object):
             with open('indexes.pkl', 'rb') as f:  # Python 3: open(..., 'rb') note that indexes
                 data_loaded = pkl.load(f)
 
-            # To Do: this should be transformed into a dictionary and you pull 'test_indexes only'. Kinda hardcoded to be fixed later
+            # To Do: this should be transformed into a dictionary and you pull 'test_indexes' only. Kinda hardcoded to be fixed later
             self.test_indexes = data_loaded[-1]
 
             print('*********************  Generating testing data *********************')
@@ -121,9 +121,23 @@ class DeepSigTesting(object):
 
         con_matrix = confusion_matrix(label_true, label_predict)
         con_matrix_perc = con_matrix/ con_matrix.astype(np.float).sum(axis=1)
-        accuracy = np.mean(np.diag(con_matrix_perc))
+        example_accuracy = np.mean(np.diag(con_matrix_perc))
 
-        my_dict = {'overall_accuracy' : accuracy,
+        # compute batch accuracy
+        num_batches = int(self.test_indexes.shape/self.args.batch_size)
+        batch_prediction_indicator = np.zeros([num_batches,])
+
+        for b in range(num_batches):
+            true_batch_label = label_true[b*self.args.batch_size] # label is the same for each batch, you can just take the first element
+            predicted_batch_label = self.get_predicted_label(label_predict[b*self.args.batch_size:(b+1)*self.args.batch_size])
+            if true_batch_label == predicted_batch_label:
+                batch_prediction_indicator[b] = 1
+
+        batch_accuracy = np.mean(batch_prediction_indicator)
+
+
+        my_dict = {'example_accuracy' : example_accuracy,
+                   'batch_accuracy': batch_accuracy,
                    'confusion_matrix' : con_matrix_perc}
 
         # Saving the objects:
