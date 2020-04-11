@@ -100,6 +100,11 @@ class DeepSigTesting(object):
         else:
             print('I have no data to load, please give me data (e.g., indexes.pkl)')
 
+    def get_predicted_label(self,labels):
+        unique, counts = np.unique(labels, return_counts=True)
+        predicted_label = unique[np.argmax(counts)]
+        return predicted_label
+
     def test_model(self):
         optimizer = Adam(lr=0.0001)
         self.model.compile(loss='categorical_crossentropy',
@@ -134,7 +139,6 @@ class DeepSigTesting(object):
                 batch_prediction_indicator[b] = 1
 
         batch_accuracy = np.mean(batch_prediction_indicator)
-
 
         my_dict = {'example_accuracy' : example_accuracy,
                    'batch_accuracy': batch_accuracy,

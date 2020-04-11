@@ -212,13 +212,6 @@
       <option name="presentableId" value="Default" />
       <updated>1585323849391</updated>
     </task>
-    <task id="LOCAL-00027" summary="Fixed location of hdf5 files">
-      <created>1585591993386</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1585591993386</updated>
-    </task>
     <task id="LOCAL-00028" summary="Fixed location of hdf5 files">
       <created>1585592159412</created>
       <option name="number" value="00028" />
@@ -555,11 +548,17 @@
       <option name="project" value="LOCAL" />
       <updated>1586350029834</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="Started batch accuracy computation">
+      <created>1586523470595</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1586523470595</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="debugging continues...trying //batch_size trick" />
     <MESSAGE value="Fixed training deadlock, now let's try to fix accuracy" />
     <MESSAGE value="Debugging to fix accuracy starts" />
     <MESSAGE value="Trying shuffle=True in fit_generator" />
@@ -584,7 +583,8 @@
     <MESSAGE value="Fixed problem with size" />
     <MESSAGE value="range(4) fixed" />
     <MESSAGE value="minor bug fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor bug fixes" />
+    <MESSAGE value="Started batch accuracy computation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Started batch accuracy computation" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1018" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586314337767">
@@ -599,10 +599,10 @@
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
     <state x="802" y="350" key="#xdebugger.XInspectDialog/0.0.2194.1194@0.0.2194.1194" timestamp="1586209204003" />
-    <state x="674" y="189" key="CommitChangelistDialog2" timestamp="1586350029344">
+    <state x="674" y="189" key="CommitChangelistDialog2" timestamp="1586523470063">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state x="674" y="189" key="CommitChangelistDialog2/0.0.2194.1194@0.0.2194.1194" timestamp="1586350029344" />
+    <state x="674" y="189" key="CommitChangelistDialog2/0.0.2194.1194@0.0.2194.1194" timestamp="1586523470063" />
     <state width="2173" height="399" key="GridCell.Tab.0.bottom" timestamp="1586350044721">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
@@ -635,10 +635,10 @@
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
     <state width="2173" height="399" key="GridCell.Tab.1.right/0.0.2194.1194@0.0.2194.1194" timestamp="1586350044721" />
-    <state x="690" y="330" key="Vcs.Push.Dialog.v2" timestamp="1586350040414">
+    <state x="690" y="330" key="Vcs.Push.Dialog.v2" timestamp="1586523477974">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state x="690" y="330" key="Vcs.Push.Dialog.v2/0.0.2194.1194@0.0.2194.1194" timestamp="1586350040414" />
+    <state x="690" y="330" key="Vcs.Push.Dialog.v2/0.0.2194.1194@0.0.2194.1194" timestamp="1586523477974" />
     <state x="906" y="514" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585936602254">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
@@ -649,15 +649,6 @@
     <state x="786" y="389" key="git4idea.merge.GitPullDialog/0.0.2194.1194@0.0.2194.1194" timestamp="1586522001116" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/DeepSigTesting.py</url>
-          <line>131</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
         <watch expression="self.test_generator" />
