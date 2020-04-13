@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7bf9813a-6ec9-491d-a25d-cee78f671760" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/FIRLayer.py" beforeDir="false" afterPath="$PROJECT_DIR$/FIRLayer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FIRConstraint.py" beforeDir="false" afterPath="$PROJECT_DIR$/FIRConstraint.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -233,13 +233,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1585323849391</updated>
-    </task>
-    <task id="LOCAL-00034" summary="debugging continues...trying //batch_size trick">
-      <created>1585618867211</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1585618867211</updated>
     </task>
     <task id="LOCAL-00035" summary="Fixed training deadlock, now let's try to fix accuracy">
       <created>1585620131273</created>
@@ -577,7 +570,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586809775609</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="Fixed FIR shape">
+      <created>1586809876463</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1586809876463</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -621,10 +621,10 @@
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
     <state x="802" y="350" key="#xdebugger.XInspectDialog/0.0.2194.1194@0.0.2194.1194" timestamp="1586209204003" />
-    <state x="674" y="189" key="CommitChangelistDialog2" timestamp="1586809775047">
+    <state x="674" y="189" key="CommitChangelistDialog2" timestamp="1586809875901">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state x="674" y="189" key="CommitChangelistDialog2/0.0.2194.1194@0.0.2194.1194" timestamp="1586809775047" />
+    <state x="674" y="189" key="CommitChangelistDialog2/0.0.2194.1194@0.0.2194.1194" timestamp="1586809875901" />
     <state width="2173" height="399" key="GridCell.Tab.0.bottom" timestamp="1586802055340">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
@@ -657,10 +657,10 @@
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
     <state width="2173" height="399" key="GridCell.Tab.1.right/0.0.2194.1194@0.0.2194.1194" timestamp="1586802055340" />
-    <state x="690" y="330" key="Vcs.Push.Dialog.v2" timestamp="1586809780559">
+    <state x="690" y="330" key="Vcs.Push.Dialog.v2" timestamp="1586809881348">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state x="690" y="330" key="Vcs.Push.Dialog.v2/0.0.2194.1194@0.0.2194.1194" timestamp="1586809780559" />
+    <state x="690" y="330" key="Vcs.Push.Dialog.v2/0.0.2194.1194@0.0.2194.1194" timestamp="1586809881348" />
     <state x="906" y="514" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586789577398">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
