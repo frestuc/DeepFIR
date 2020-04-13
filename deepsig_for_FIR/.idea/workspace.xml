@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7bf9813a-6ec9-491d-a25d-cee78f671760" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/FIRConstraint.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DeepSig.py" beforeDir="false" afterPath="$PROJECT_DIR$/DeepSig.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DeepSigTesting.py" beforeDir="false" afterPath="$PROJECT_DIR$/DeepSigTesting.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FIRConstraint.py" beforeDir="false" afterPath="$PROJECT_DIR$/FIRConstraint.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FIRLayer.py" beforeDir="false" afterPath="$PROJECT_DIR$/FIRLayer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -237,13 +235,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1585323849391</updated>
-    </task>
-    <task id="LOCAL-00032" summary="debugging continues">
-      <created>1585617761434</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1585617761434</updated>
     </task>
     <task id="LOCAL-00033" summary="debugging continues...trying //batch_size trick">
       <created>1585618647705</created>
@@ -581,11 +572,17 @@
       <option name="project" value="LOCAL" />
       <updated>1586790423500</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="Added FIR constraint, need to test it">
+      <created>1586808609932</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1586808609933</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Trying shuffle=True in fit_generator" />
     <MESSAGE value="Trying shuffle=True in fit_generator + remove prints" />
     <MESSAGE value="Trying shuffle=True in fit_generator + extended training time" />
     <MESSAGE value="Training starts, finally" />
@@ -610,7 +607,8 @@
     <MESSAGE value="Started batch accuracy computation" />
     <MESSAGE value="Batch accuracy added" />
     <MESSAGE value="Minor fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor fixes" />
+    <MESSAGE value="Added FIR constraint, need to test it" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added FIR constraint, need to test it" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1018" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586314337767">
@@ -625,10 +623,10 @@
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
     <state x="802" y="350" key="#xdebugger.XInspectDialog/0.0.2194.1194@0.0.2194.1194" timestamp="1586209204003" />
-    <state x="674" y="189" key="CommitChangelistDialog2" timestamp="1586790422960">
+    <state x="674" y="189" key="CommitChangelistDialog2" timestamp="1586808609303">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state x="674" y="189" key="CommitChangelistDialog2/0.0.2194.1194@0.0.2194.1194" timestamp="1586790422960" />
+    <state x="674" y="189" key="CommitChangelistDialog2/0.0.2194.1194@0.0.2194.1194" timestamp="1586808609303" />
     <state width="2173" height="399" key="GridCell.Tab.0.bottom" timestamp="1586802055340">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
@@ -661,18 +659,18 @@
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
     <state width="2173" height="399" key="GridCell.Tab.1.right/0.0.2194.1194@0.0.2194.1194" timestamp="1586802055340" />
-    <state x="690" y="330" key="Vcs.Push.Dialog.v2" timestamp="1586808596644">
+    <state x="690" y="330" key="Vcs.Push.Dialog.v2" timestamp="1586808614346">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state x="690" y="330" key="Vcs.Push.Dialog.v2/0.0.2194.1194@0.0.2194.1194" timestamp="1586808596644" />
+    <state x="690" y="330" key="Vcs.Push.Dialog.v2/0.0.2194.1194@0.0.2194.1194" timestamp="1586808614346" />
     <state x="906" y="514" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586789577398">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
     <state x="906" y="514" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2194.1194@0.0.2194.1194" timestamp="1586789577398" />
-    <state x="786" y="389" key="git4idea.merge.GitPullDialog" timestamp="1586789619257">
+    <state x="786" y="389" key="git4idea.merge.GitPullDialog" timestamp="1586809598594">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state x="786" y="389" key="git4idea.merge.GitPullDialog/0.0.2194.1194@0.0.2194.1194" timestamp="1586789619257" />
+    <state x="786" y="389" key="git4idea.merge.GitPullDialog/0.0.2194.1194@0.0.2194.1194" timestamp="1586809598594" />
     <state x="760" y="264" width="672" height="678" key="search.everywhere.popup" timestamp="1586800853815">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>

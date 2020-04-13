@@ -41,7 +41,7 @@ class FIRLayer(Layer):
                                    initializer=FIRInitializer(),
                                    regularizer=self.kernel_regularizer,
                                    trainable=True,
-                                   constraint=FIRConstraint(epsilon=self.epsilon))
+                                   constraint=FIRConstraint(epsilon=self.epsilon,shape = (self.filter_dim,self.actual_input_shape[-1])))
         '''Define layer output length'''
         self.output_dim = int(np.ceil(1. * self.actual_input_shape[1] / self.strides))
         if self.verbose:
