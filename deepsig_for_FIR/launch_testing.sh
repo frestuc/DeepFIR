@@ -22,4 +22,4 @@ python2 ./DeepSigTesting.py \
         --save_file_name fir_accuracy \
         --id_gpu $gpu \
         --save_path /home/salvo/deepsig_res/results/FIR/unconstrained/batch_$batch/$ndev \
-        --models_path /home/salvo/deepsig_res/res_${batch}_unconstr/per_dev/per_dev_$ndev \
+        --models_path /home/salvo/deepsig_res/res_${batch}_unconstr/per_dev_$ndev/per_dev \
