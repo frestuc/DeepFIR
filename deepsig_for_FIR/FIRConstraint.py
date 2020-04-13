@@ -11,7 +11,6 @@ class FIRConstraint(Constraint):
         self.base_fir = K.variable(self.base_fir)
 
     def __call__(self, w):
-        K.eval(w)
         return K.clip(w-self.base_fir, min_value=-self.epsilon, max_value=self.epsilon) + self.base_fir
 
     def get_config(self):
