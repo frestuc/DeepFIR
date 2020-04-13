@@ -129,7 +129,7 @@ class DeepSigTesting(object):
         example_accuracy = np.mean(np.diag(con_matrix_perc))
 
         # compute batch accuracy
-        num_batches = int(self.test_indexes.shape/self.args.batch_size)
+        num_batches = int(len(self.test_indexes)/self.args.batch_size)
         batch_prediction_indicator = np.zeros([num_batches,])
 
         for b in range(num_batches):
