@@ -6,7 +6,7 @@ from keras.engine.topology import Layer
 from keras.layers import Conv1D
 from keras.initializers import glorot_normal
 from FIRInitializer import FIRInitializer
-
+from FIRConstraint import FIRConstraint
 
 class FIRLayer(Layer):
     '''
@@ -15,13 +15,14 @@ class FIRLayer(Layer):
     '''
 
     def __init__(self, filter_dim=11, channels=1, strides=1, verbose=0, output_dim=None,
-                 kernel_regularizer=None, **kwargs):
+                 kernel_regularizer=None, epsilon=None, **kwargs):
 
         self.filter_dim = filter_dim
         self.channels = channels
         self.strides = strides
         self.output_dim = output_dim
         self.verbose = verbose
+        self.epsilon=epsilon
         self.kernel_regularizer = kernel_regularizer
         super(FIRLayer, self).__init__(**kwargs)
         if self.verbose:
@@ -39,7 +40,8 @@ class FIRLayer(Layer):
                                    shape=(self.filter_dim, self.actual_input_shape[-1], self.channels),  # (5, 2, 1)
                                    initializer=FIRInitializer(),
                                    regularizer=self.kernel_regularizer,
-                                   trainable=True)
+                                   trainable=True,
+                                   constraint=FIRConstraint(epsilon=self.epsilon))
         '''Define layer output length'''
         self.output_dim = int(np.ceil(1. * self.actual_input_shape[1] / self.strides))
         if self.verbose:

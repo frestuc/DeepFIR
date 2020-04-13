@@ -86,7 +86,12 @@ class DeepSig(object):
         # FIRLayer(output_dim=slice_size, filter_dim=fir_size, channels=1, verbose=1, input_shape=(slice_size, 2)))
         # x = FIRLayer(output_dim=(1, 1024, 2), filter_dim=self.args.fir_size, channels=1, verbose=1, input_shape=(1, 1024, 2), name = 'FIR_layer')(
         #     inputs)
-        x = FIRLayer(output_dim=1024, filter_dim=self.args.fir_size, channels=1, verbose=1, input_shape=(1, 1024, 2), name = 'FIR_layer')(inputs)
+        if self.args.epsilon:
+            x = FIRLayer(output_dim=1024, filter_dim=self.args.fir_size, channels=1, verbose=1,
+                         input_shape=(1, 1024, 2), epsilon = self.args.epsilon, name = 'FIR_layer')(inputs)
+        else:
+            x = FIRLayer(output_dim=1024, filter_dim=self.args.fir_size, channels=1, verbose=1,
+                         input_shape=(1, 1024, 2), name='FIR_layer')(inputs)
         x = Conv2D(64, kernel_size=1, name='Conv_1', trainable = False)(x)
         x = MaxPooling2D(pool_size=(1, 2), data_format='channels_last', name='MaxPool_1', trainable = False)(x)
         x = Conv2D(64, kernel_size=1, name='Conv_2', trainable = False)(x)
@@ -387,6 +392,9 @@ class DeepSig(object):
 
         parser.add_argument('--bl_model_name', type=str, default='modulation_model.hdf5',
                             help='Name of baseline model.')
+
+        parser.add_argument('--epsilon', type=float, default=0,
+                            help='Bound on FIR taps computation in absolute value. If 0, train without bounds.')
 
         parser.add_argument('--fir_model_name', type=str, default='FIR_model.hdf5',
                             help='Name of baseline model.')

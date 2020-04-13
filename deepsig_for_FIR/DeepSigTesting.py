@@ -7,6 +7,7 @@ import numpy as np
 import pickle as pkl
 import time
 import os
+from FIRConstraint import FIRConstraint
 
 from keras.models import Model
 from keras.optimizers import Adam
@@ -48,7 +49,8 @@ class DeepSigTesting(object):
         '''Build model architecture.'''
         print('*************** Loading Model ***************')
         if os.path.exists(self.args.model_name):
-            self.model = load_model(self.args.model_name)
+            custom = {'FIRConstraint': FIRConstraint}
+            self.model = load_model(self.args.model_name,custom_objects=custom)
             self.model.summary()
         else:
             print('Model does not exists')

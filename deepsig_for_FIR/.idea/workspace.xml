@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7bf9813a-6ec9-491d-a25d-cee78f671760" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/FIRConstraint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DeepSig.py" beforeDir="false" afterPath="$PROJECT_DIR$/DeepSig.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DeepSigTesting.py" beforeDir="false" afterPath="$PROJECT_DIR$/DeepSigTesting.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FIRLayer.py" beforeDir="false" afterPath="$PROJECT_DIR$/FIRLayer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +42,7 @@
       <recent name="C:\Users\totix\Documents\GitHub\DeepRadioIDModulation\deepsig_for_FIR" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.cpu_deepsig_load_fir_perdev">
+  <component name="RunManager" selected="Python.FIRConstraint">
     <configuration name="launch_me_cpu.sh" type="BashConfigurationType" factoryName="Bash" temporary="true">
       <module name="deepsig_for_FIR" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -48,6 +52,27 @@
       <option name="PARENT_ENVS" value="true" />
       <option name="SCRIPT_NAME" value="C:\Users\totix\Documents\GitHub\DeepRadioIDModulation\deepsig_for_FIR\launch_me_cpu.sh" />
       <option name="PARAMETERS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="FIRConstraint" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="deepsig_for_FIR" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/FIRConstraint.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
     <configuration name="cpu_deepsig" type="PythonConfigurationType" factoryName="Python">
@@ -193,9 +218,11 @@
       <item itemvalue="Python.cpu_deepsig_test_fir_dev" />
       <item itemvalue="Python.test_garbage" />
       <item itemvalue="Shell Script.launch_me_cpu.sh" />
+      <item itemvalue="Python.FIRConstraint" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.FIRConstraint" />
         <item itemvalue="Shell Script.launch_me_cpu.sh" />
       </list>
     </recent_temporary>
@@ -210,13 +237,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1585323849391</updated>
-    </task>
-    <task id="LOCAL-00031" summary="debugging starts">
-      <created>1585617260614</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1585617260614</updated>
     </task>
     <task id="LOCAL-00032" summary="debugging continues">
       <created>1585617761434</created>
@@ -554,7 +574,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586789634616</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="Minor fixes">
+      <created>1586790423500</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1586790423500</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -598,46 +625,46 @@
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
     <state x="802" y="350" key="#xdebugger.XInspectDialog/0.0.2194.1194@0.0.2194.1194" timestamp="1586209204003" />
-    <state x="674" y="189" key="CommitChangelistDialog2" timestamp="1586789634019">
+    <state x="674" y="189" key="CommitChangelistDialog2" timestamp="1586790422960">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state x="674" y="189" key="CommitChangelistDialog2/0.0.2194.1194@0.0.2194.1194" timestamp="1586789634019" />
-    <state width="2173" height="399" key="GridCell.Tab.0.bottom" timestamp="1586350044721">
+    <state x="674" y="189" key="CommitChangelistDialog2/0.0.2194.1194@0.0.2194.1194" timestamp="1586790422960" />
+    <state width="2173" height="399" key="GridCell.Tab.0.bottom" timestamp="1586802055340">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="399" key="GridCell.Tab.0.bottom/0.0.2194.1194@0.0.2194.1194" timestamp="1586350044721" />
-    <state width="2173" height="399" key="GridCell.Tab.0.center" timestamp="1586350044721">
+    <state width="2173" height="399" key="GridCell.Tab.0.bottom/0.0.2194.1194@0.0.2194.1194" timestamp="1586802055340" />
+    <state width="2173" height="399" key="GridCell.Tab.0.center" timestamp="1586802055340">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="399" key="GridCell.Tab.0.center/0.0.2194.1194@0.0.2194.1194" timestamp="1586350044721" />
-    <state width="2173" height="399" key="GridCell.Tab.0.left" timestamp="1586350044721">
+    <state width="2173" height="399" key="GridCell.Tab.0.center/0.0.2194.1194@0.0.2194.1194" timestamp="1586802055340" />
+    <state width="2173" height="399" key="GridCell.Tab.0.left" timestamp="1586802055340">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="399" key="GridCell.Tab.0.left/0.0.2194.1194@0.0.2194.1194" timestamp="1586350044721" />
-    <state width="2173" height="399" key="GridCell.Tab.0.right" timestamp="1586350044721">
+    <state width="2173" height="399" key="GridCell.Tab.0.left/0.0.2194.1194@0.0.2194.1194" timestamp="1586802055340" />
+    <state width="2173" height="399" key="GridCell.Tab.0.right" timestamp="1586802055340">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="399" key="GridCell.Tab.0.right/0.0.2194.1194@0.0.2194.1194" timestamp="1586350044721" />
-    <state width="2173" height="399" key="GridCell.Tab.1.bottom" timestamp="1586350044721">
+    <state width="2173" height="399" key="GridCell.Tab.0.right/0.0.2194.1194@0.0.2194.1194" timestamp="1586802055340" />
+    <state width="2173" height="399" key="GridCell.Tab.1.bottom" timestamp="1586802055341">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="399" key="GridCell.Tab.1.bottom/0.0.2194.1194@0.0.2194.1194" timestamp="1586350044721" />
-    <state width="2173" height="399" key="GridCell.Tab.1.center" timestamp="1586350044721">
+    <state width="2173" height="399" key="GridCell.Tab.1.bottom/0.0.2194.1194@0.0.2194.1194" timestamp="1586802055341" />
+    <state width="2173" height="399" key="GridCell.Tab.1.center" timestamp="1586802055340">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="399" key="GridCell.Tab.1.center/0.0.2194.1194@0.0.2194.1194" timestamp="1586350044721" />
-    <state width="2173" height="399" key="GridCell.Tab.1.left" timestamp="1586350044721">
+    <state width="2173" height="399" key="GridCell.Tab.1.center/0.0.2194.1194@0.0.2194.1194" timestamp="1586802055340" />
+    <state width="2173" height="399" key="GridCell.Tab.1.left" timestamp="1586802055340">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="399" key="GridCell.Tab.1.left/0.0.2194.1194@0.0.2194.1194" timestamp="1586350044721" />
-    <state width="2173" height="399" key="GridCell.Tab.1.right" timestamp="1586350044721">
+    <state width="2173" height="399" key="GridCell.Tab.1.left/0.0.2194.1194@0.0.2194.1194" timestamp="1586802055340" />
+    <state width="2173" height="399" key="GridCell.Tab.1.right" timestamp="1586802055340">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state width="2173" height="399" key="GridCell.Tab.1.right/0.0.2194.1194@0.0.2194.1194" timestamp="1586350044721" />
-    <state x="690" y="330" key="Vcs.Push.Dialog.v2" timestamp="1586789638006">
+    <state width="2173" height="399" key="GridCell.Tab.1.right/0.0.2194.1194@0.0.2194.1194" timestamp="1586802055340" />
+    <state x="690" y="330" key="Vcs.Push.Dialog.v2" timestamp="1586808596644">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state x="690" y="330" key="Vcs.Push.Dialog.v2/0.0.2194.1194@0.0.2194.1194" timestamp="1586789638006" />
+    <state x="690" y="330" key="Vcs.Push.Dialog.v2/0.0.2194.1194@0.0.2194.1194" timestamp="1586808596644" />
     <state x="906" y="514" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586789577398">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
@@ -646,6 +673,10 @@
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
     <state x="786" y="389" key="git4idea.merge.GitPullDialog/0.0.2194.1194@0.0.2194.1194" timestamp="1586789619257" />
+    <state x="760" y="264" width="672" height="678" key="search.everywhere.popup" timestamp="1586800853815">
+      <screen x="0" y="0" width="2194" height="1194" />
+    </state>
+    <state x="760" y="264" width="672" height="678" key="search.everywhere.popup/0.0.2194.1194@0.0.2194.1194" timestamp="1586800853815" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
