@@ -144,6 +144,9 @@ class DeepSigTesting(object):
                    'batch_accuracy': batch_accuracy,
                    'confusion_matrix' : con_matrix_perc}
 
+        print('Example Accuracy: ', example_accuracy)
+        print('Batch Accuracy: ', batch_accuracy)
+
         # Saving the objects:
         save_name = os.path.join(self.args.save_path,(self.args.save_file_name + '.pkl'))
         with open(save_name, 'wb') as f:  # Python 3: open(..., 'wb')

@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7bf9813a-6ec9-491d-a25d-cee78f671760" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DeepSigTesting.py" beforeDir="false" afterPath="$PROJECT_DIR$/DeepSigTesting.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -211,13 +210,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1585323849391</updated>
-    </task>
-    <task id="LOCAL-00030" summary="Fixed location of hdf5 files">
-      <created>1585596050343</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1585596050343</updated>
     </task>
     <task id="LOCAL-00031" summary="debugging starts">
       <created>1585617260614</created>
@@ -555,11 +547,17 @@
       <option name="project" value="LOCAL" />
       <updated>1586786652871</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="Minor fixes">
+      <created>1586789634616</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1586789634616</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Debugging to fix accuracy starts" />
     <MESSAGE value="Trying shuffle=True in fit_generator" />
     <MESSAGE value="Trying shuffle=True in fit_generator + remove prints" />
     <MESSAGE value="Trying shuffle=True in fit_generator + extended training time" />
@@ -584,7 +582,8 @@
     <MESSAGE value="minor bug fixes" />
     <MESSAGE value="Started batch accuracy computation" />
     <MESSAGE value="Batch accuracy added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Batch accuracy added" />
+    <MESSAGE value="Minor fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor fixes" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1018" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586314337767">
@@ -599,10 +598,10 @@
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
     <state x="802" y="350" key="#xdebugger.XInspectDialog/0.0.2194.1194@0.0.2194.1194" timestamp="1586209204003" />
-    <state x="674" y="189" key="CommitChangelistDialog2" timestamp="1586786652367">
+    <state x="674" y="189" key="CommitChangelistDialog2" timestamp="1586789634019">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state x="674" y="189" key="CommitChangelistDialog2/0.0.2194.1194@0.0.2194.1194" timestamp="1586786652367" />
+    <state x="674" y="189" key="CommitChangelistDialog2/0.0.2194.1194@0.0.2194.1194" timestamp="1586789634019" />
     <state width="2173" height="399" key="GridCell.Tab.0.bottom" timestamp="1586350044721">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
@@ -635,10 +634,10 @@
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
     <state width="2173" height="399" key="GridCell.Tab.1.right/0.0.2194.1194@0.0.2194.1194" timestamp="1586350044721" />
-    <state x="690" y="330" key="Vcs.Push.Dialog.v2" timestamp="1586786657696">
+    <state x="690" y="330" key="Vcs.Push.Dialog.v2" timestamp="1586789638006">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
-    <state x="690" y="330" key="Vcs.Push.Dialog.v2/0.0.2194.1194@0.0.2194.1194" timestamp="1586786657696" />
+    <state x="690" y="330" key="Vcs.Push.Dialog.v2/0.0.2194.1194@0.0.2194.1194" timestamp="1586789638006" />
     <state x="906" y="514" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586789577398">
       <screen x="0" y="0" width="2194" height="1194" />
     </state>
