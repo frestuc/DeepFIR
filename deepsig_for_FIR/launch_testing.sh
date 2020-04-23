@@ -1,7 +1,7 @@
 #!/bin/bash
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-9.0/lib64/
 gpu=$1
-ndev=$2
+fir_n=$2
 batch=$3
 
 # dgx-2
@@ -21,5 +21,5 @@ python2 ./DeepSigTesting.py \
         --num_classes 24 \
         --save_file_name fir_accuracy \
         --id_gpu $gpu \
-        --save_path /home/salvo/deepsig_res/results/FIR/unconstrained/batch_$batch/$ndev \
-        --models_path /home/salvo/deepsig_res/res_${batch}_unconstr/per_dev_$ndev/per_dev \
+        --save_path /home/salvo/deepsig_res/results/FIR/unconstrained/batch_$batch/$fir_n \
+        --models_path /home/salvo/deepsig_res/res_${batch}_unconstr/per_dev_$fir_n/per_dev \
